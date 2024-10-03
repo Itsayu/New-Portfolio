@@ -1,0 +1,24 @@
+{
+	"name": "Ayush Kumar Tiwari", 
+	"logo": "",
+	"splashscreen": true,
+
+	"autoupdatecheck": true,
+	"version": "1.0.6",
+
+	"username": {
+		"github": "itsayu",
+		"medium": "@itsayu",
+		"dev": "itsayu"
+	},
+	"repository": {
+		"owner": "itsayu",
+		"name": "portfolio",
+		"repoName": "portfolio"
+	},
+	"portfolio": {
+		"fork_this": "Open-Source project 🥰",
+		"repo_html": "https://github.com/itsayu",
+		"repo_api": "https://api.github.com/repos/itsayu"
+	}
+}

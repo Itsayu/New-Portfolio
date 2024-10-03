@@ -1,0 +1,64 @@
+{
+	"Websites": [
+		{
+			"person": "https://www.linkedin.com/in/itsayu",
+			"link": "https://www.linkedin.com/in/itsayu/",
+			"note": ""
+		},
+		{
+			"person": "articles.itsayu.netlify.app",
+			"link": "https://codescomet.com/",
+			"note": ""
+		}
+
+	],
+
+	"links": [
+		{
+			"person": "Home",
+			"link": "/",
+			"note": ""
+		},
+		{ 
+			"person": "Documentations",
+			"link": "https://codescomet.com/",
+			"note": ""
+		},	{
+			"person": "Articles",
+			"link": "https://codescomet.com/",
+			"note": ""
+		},
+
+		{
+			"person": "Projects",
+			"link": "https://github.com/itsayu",
+			"note": ""
+		},
+		{
+			"person": "Contact",
+			"link": "mailto:ayushtiwari.connect@gmail.com",
+			"note": ""
+		}
+
+
+	],
+
+	"social": [
+		{
+			"url": "https://medium.com/@itsayu",
+			"icon": "medium"
+		},
+		{
+			"url": "https://dev.to/itsayu",
+			"icon": "dev"
+		},
+		{
+			"url": "https://www.linkedin.com/in/itsayu/",
+			"icon": "linkedin"
+		},
+		{
+			"url": "https://github.com/itsayu",
+			"icon": "github"
+		}
+	]
+}
