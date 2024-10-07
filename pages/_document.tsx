@@ -98,11 +98,11 @@ export default function Document() {
         />
         <meta
           property="og:image"
-          content="https://avatars.githubusercontent.com/u/75434191?v=4"
+          content="https://avatars.githubusercontent.com/u/94097145?v=4"
         />
         <meta
           property="og:image:secure_url"
-          content="https://avatars.githubusercontent.com/u/75434191?v=4"
+          content="https://avatars.githubusercontent.com/u/94097145?v=4"
         />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:alt" content="Ayush Kumar Tiwari" />
