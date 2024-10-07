@@ -9,12 +9,11 @@ const withPWA = require('next-pwa')({
   
   module.exports = withPWA({
 	webpack: (config) => {
-	  // Custom Webpack configurations can go here
 	  return config;
 	},
   
 	reactStrictMode: true,
-	swcMinify: true, // Use SWC compiler for faster builds
+	swcMinify: true, 
   
 	env: {
 	  dir: '/',
