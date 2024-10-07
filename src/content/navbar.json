@@ -1,20 +1,29 @@
 [
 	{
-		"url": "/",
-		"title": "Home"
+	  "url": "/",
+	  "title": "Home"
 	},
 	{
-		"url": "/docs",
-		"title": "Docs"
+	  "url": "/projects",
+	  "title": "Projects"
 	},
 	{
-		"url": "/articles",
-		"title": "Articles"
+	  "url": "/articles",
+	  "title": "Articles"
 	},
 	{
-		"url": "/projects",
-		"title": "Projects"
+	  "url": "other",
+	  "title": "Other",
+	  "subMenu": [
+		{
+		  "url": "../../pages/tools",
+		  "title": "Tools"
+		},
+		{
+		  "url": "/contact",
+		  "title": "Contact"
+		}
+	  ]
 	}
-
-
-]
+  ]
+  

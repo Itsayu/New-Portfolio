@@ -72,10 +72,7 @@ const software = [
 	{ key: 'figma', 		name: 'Figma', 				type: 'devicon' },
 	{ key: 'jetbrains', name: 'Jetbrains', type: 'devicon' },
 	{ key: 'vscode', 		name: 'VSCode', 			type: 'devicon' },
-	{key:'blender',name:'blender',type:'devicon'},
-	{key:'unity',name:'unity',type:'devicon'},
-	{key:'androidstudio',name:'AndroidStudio',type:'devicon'},
-	{key:'unrealengine',name:'UnrealEngine',type:'devicon'}
+	{ key:'unrealengine',name:'UnrealEngine',type:'devicon' }
 
 
 
@@ -87,7 +84,6 @@ const tech = [
 	{ key: 'nodejs', name: 'NodeJS', type: 'devicon' },
 	{ key: 'react', name: 'React', type: 'devicon' },
 	{ key: 'nextjs', name: 'NextJS', type: 'devicon' },
-	{ key: 'php', name: 'PHP', type: 'devicon' },
 	{ key: 'wordpress', name: 'WordPress', type: 'devicon' },
 	{ key: 'html5', name: 'HTML5', type: 'devicon' },
 	{ key: 'css3', name: 'CSS3', type: 'devicon' },
@@ -95,24 +91,17 @@ const tech = [
 	{ key: 'git', name: 'Git', type: 'devicon' },
 	{ key: 'mysql', name: 'MySQL', type: 'devicon' },
 	{ key: 'mongodb', name: 'MongoDB', type: 'devicon' },
-	{ key: 'python', name: 'Python', type: 'devicon' },
-	{ key: 'java', name: 'Java', type: 'devicon' },
 	{ key: 'csharp', name: 'C#', type: 'devicon' },
-	{ key: 'django', name: 'Django', type: 'devicon' },
 	{ key: 'typescript', name: 'TypeScript', type: 'devicon' },
 	{ key: 'c', name: 'C', type: 'devicon' },
 	{ key: 'cplusplus', name: 'C++', type: 'devicon' },
 	{ key: 'jquery', name: 'jQuery', type: 'devicon' },
-	{ key: 'kotlin', name: 'Kotlin', type: 'devicon' },
 	{ key: 'vuejs', name: 'Vuejs', type: 'devicon' },
 	{ key: 'tailwind', name: 'TailwindCSS', type: 'devicon' },
 	{ key: 'bootstrap', name: 'Bootstrap', type: 'devicon' },
 	{ key: 'npm', name: 'npm', type: 'devicon' },
 	{ key: 'yarn', name: 'Yarn', type: 'devicon' },
-	{key:"angularjs",name:"AngularJS",type:"devicon"},
-	{key:"android",name:"Android",type:"devicon"},
-	{key:"firebase",name:"Firebase",type:"devicon"},
-	{key:"flask",name:"Flask",type:"devicon"}
+	{key:"firebase",name:"Firebase",type:"devicon"}
 
 
 

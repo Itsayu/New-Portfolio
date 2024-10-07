@@ -1,137 +1,16 @@
-/* 
-.terminalContainer {
-    display: flex;
-    flex-direction: column;
-    min-height: 350px;
-    width: 100%;
-    max-width: 1280px;
-    margin: 4rem auto 0;
-    overflow-y: auto;
-    max-height: 600px;
-  }
-  
-  .terminalHeader {
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 36px;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
-    background-color: rgba(0, 0, 0, 0.4);
-    position: sticky; 
-    top: 0;
-    z-index: 10;
-
-  }
-  
-  .controlButtons {
-    display: flex;
-    margin-left: 1.25rem;
-    gap: 0.5rem;
-  }
-  
-  .controlButton {
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-  }
-  
-  .redButton {
-    background-color: #fc625d;
-  }
-  
-  .yellowButton {
-    background-color: #fdbc40;
-  }
-  
-  .greenButton {
-    background-color: #34c749;
-  }
-  
-  .headerTitle {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    color: #9ca3af;
-  }
-  
-  .terminalBody {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    overflow: hidden;
-    background-color: transparent;
-  }
-  
-  .terminalBackground {
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -5;
-  }
-  
-  .content {
-    width: 100%;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: flex-start;
-    min-height: 300px;
-  }
-  
-  .statement {
-    color: #d1d5db;
-    font-family: monospace;
-    line-height: 1.5;
-  }
-  
-  .prompt {
-    color: #a78bfa;
-  }
-  
-  .cursor {
-    display: inline-block;
-    width: 8px;
-    height: 16px;
-    background-color: #d1d5db;
-    margin-left: 4px;
-    animation: blink 1s infinite;
-  }
-  
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-
- */
-
-
-
- 
  .terminalContainer {
   display: flex;
   flex-direction: column;
   min-height: 350px;
   max-height: 600px;
   width: 100%;
-  max-width: 1020px;
+  max-width: 1000px;
   margin: 4rem auto 0;
   overflow-y: auto;
   border-radius: 8px;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   cursor: pointer;
   outline: none;
+  -webkit-tap-highlight-color: transparent; /* Removes tap highlight on iOS */
 }
 
 .terminalHeader {
@@ -188,6 +67,8 @@
   border-bottom-right-radius: 1rem;
   overflow: hidden;
   background-color: transparent;
+  cursor: pointer;
+  outline: none;
 }
 
 .terminalBackground {
@@ -229,7 +110,7 @@
 
 .cursor {
   display: inline-block;
-  width: 8px;
+  width: 4px;
   height: 16px;
   background-color: #d1d5db;
   margin-left: 4px;
@@ -253,7 +134,7 @@
 /* Responsive styles for mobile */
 @media (max-width: 768px) {
   .terminalContainer {
-    max-width: 100%;
+    max-width: 95%;
     margin: 2rem 10px 0;
     min-height: 300px;
   }
@@ -264,6 +145,7 @@
 
   .content {
     padding: 1rem;
+    min-height: 200px;
   }
 
   .controlButtons {
@@ -272,5 +154,303 @@
 
   .headerTitle {
     font-size: 14px;
+  }
+
+  .controlButton {
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+  }
+
+  .terminalBody {
+    padding: 16px;
+    min-height: 200px;
+  }
+}
+
+
+
+
+
+
+
+
+.typedInput {
+  display: inline-block;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.statement {
+  position: relative;
+}
+
+/* Optional: Add a blinking cursor after the typing text */
+.typedInput::after {
+  content: '';
+  width: 8px;
+  height: 16px;
+  background-color: #d1d5db;
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+}
+
+/* Remove the cursor after typing is complete */
+.statement:has(.returnValue) .typedInput::after {
+  display: none;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+.returnValue {
+  color: #9ca3af;
+  margin-left: 1rem;
+  display: inline-block;
+}
+
+.returnValue a {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.returnValue a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Add spacing between array items */
+.returnValue > *:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+
+/* Terminal Container */
+.terminalContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+  max-height: 600px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 4rem auto 0;
+  overflow-y: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Terminal Header */
+.terminalHeader {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 36px;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+/* Control Buttons */
+.controlButtons {
+  display: flex;
+  margin-left: 1.25rem;
+  gap: 0.5rem;
+}
+
+.controlButton {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+}
+
+.redButton {
+  background-color: #fc625d;
+}
+
+.yellowButton {
+  background-color: #fdbc40;
+}
+
+.greenButton {
+  background-color: #34c749;
+}
+
+.headerTitle {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: #9ca3af;
+}
+
+/* Terminal Body */
+.terminalBody {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.terminalBackground {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(31, 28, 28, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -5;
+}
+
+.content {
+  width: 100%;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+  min-height: 420px;
+}
+
+/* Statement Styles */
+.statement {
+  color: #d1d5db;
+  font-family: monospace;
+  line-height: 1.5;
+  position: relative;
+  width: 100%;
+}
+
+.prompt {
+  color: #a78bfa;
+}
+
+/* Typed Input Styles */
+.typedInput {
+  display: inline-block;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.typedInput::after {
+  content: '';
+  width: 8px;
+  height: 16px;
+  background-color: #d1d5db;
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+}
+
+.statement:has(.returnValue) .typedInput::after {
+  display: none;
+}
+
+/* Return Value Styles */
+.returnValue {
+  color: #9ca3af;
+  margin-left: 1rem;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.returnValue a {
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.returnValue a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Array Return Styles */
+.arrayReturn {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+
+.arrayContent {
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.arrayItem {
+  padding: 0.125rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.arrayItem:not(:last-child) {
+  margin-bottom: 0.25rem;
+}
+
+/* Cursor Animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .terminalContainer {
+    max-width: 95%;
+    margin: 2rem 10px 0;
+    min-height: 300px;
+  }
+  
+  .statement {
+    font-size: 14px;
+  }
+
+  .content {
+    padding: 1rem;
+    min-height: 200px;
+  }
+
+  .controlButtons {
+    margin-left: 0.75rem;
+  }
+
+  .headerTitle {
+    font-size: 14px;
+  }
+
+  .controlButton {
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+  }
+
+  .terminalBody {
+    padding: 16px;
+    min-height: 200px;
+  }
+
+  .arrayContent {
+    margin-left: 0.75rem;
+  }
+
+  .returnValue {
+    margin-left: 0.75rem;
   }
 }

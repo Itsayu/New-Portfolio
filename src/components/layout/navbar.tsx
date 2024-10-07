@@ -1,13 +1,461 @@
+// import { useEffect, useState } from "react"; 
+// import { useRouter } from "next/router"; 
+// import Link from "next/link"; 
+// import ThemeMode from "../utils/theme";
+
+// import settings from "../../content/_settings.json"; 
+// import content from "../../content/navbar.json"; 
+// import css from "../../styles/scss/structure/navbar.module.scss"; 
+// import Cookies from "js-cookie"; 
+// import Image from "next/image"; 
+
+// declare global {
+//   interface Window {
+//     sticky: {
+//       nav: HTMLElement | null;
+//       at: number;
+//     };
+//   }
+// }
+
+// // Define interfaces for route and scroll events
+// interface RouteEvents {
+//   addEventListeners: () => void;
+//   removeEventListeners: () => void;
+//   closeMenu: () => void;
+// }
+
+// interface ScrollEvents {
+//   addEventListeners: () => void;
+//   removeEventListeners: () => void;
+//   getPosition: (e: HTMLElement | null, top: boolean) => number;
+//   maybeHideNav: () => void;
+// }
+
+// // Define the functional component 'Navbar'
+// export default function Navbar() {
+//   // Initialize router and state variables
+//   const router = useRouter();
+//   const [menuState, menuToggle] = useState<boolean | undefined>();
+
+//   // Retrieve email and password cookies
+//   const email = Cookies.get("email");
+//   const password = Cookies.get("password");
+
+//   let signInContent; // Declare a variable to hold sign-in content
+
+//   // Determine the sign-in content based on cookie existence
+//   if (email && password) {
+//     // If email and password cookies exist, show the user's profile image
+//     signInContent = (
+//       <div className={css.circleImage}>
+//         <Image
+//           src="/img/user.jpg"
+//           width={34}
+//           height={34}
+//           alt="Profile Image"
+//           loading="eager"
+//         />
+//       </div>
+//     );
+//   } else {
+//     // If email and password cookies do not exist, show the "Sign In" button
+//     signInContent = (
+//       <button className={css.signInButton}>
+//         <Link href="/signin">Sign In</Link>
+//       </button>
+//     );
+//   }
+
+//   // useEffect: Set the initial menu state to false
+//   useEffect(() => {
+//     menuToggle(false);
+//   }, []);
+
+//   // useEffect: Define and manage route change events
+//   useEffect(() => {
+//     // Define a class for route change events
+//     class RouteEventsImpl implements RouteEvents {
+//       constructor() {
+//         console.log(
+//           "%c☰  Navigation Router Events Loaded",
+//           "background: #060708; color: #fff; padding: .125rem .75rem; border-radius: 5px; font-weight: 900; "
+//         );
+//         this.addEventListeners();
+//       }
+
+//       closeMenu() {
+//         // Close the menu by setting 'menuState' to false
+//         menuToggle(false);
+//       }
+
+//       addEventListeners() {
+//         // Add an event listener for 'routeChangeComplete'
+//         router.events.on("routeChangeComplete", this.closeMenu);
+//       }
+
+//       removeEventListeners() {
+//         // Remove the event listener for 'routeChangeComplete' when the component unmounts
+//         router.events.off("routeChangeComplete", this.closeMenu);
+//       }
+//     }
+
+//     // Create an instance of 'RouteEventsImpl' and set up event listeners
+//     const routeEvents = new RouteEventsImpl();
+
+//     // Clean up event listeners when the component unmounts
+//     return () => {
+//       routeEvents.removeEventListeners();
+//     };
+//   }, [router.events]);
+
+//   // useEffect: Define and manage scroll events
+//   useEffect(() => {
+//     // Define a class for scroll events
+//     class ScrollEventsImpl implements ScrollEvents {
+//       lastY: number;
+
+//       constructor() {
+//         console.log(
+//           "%c▼  Navigation Scroll Events Loaded",
+//           "background: #060708; color: #fff; padding: .125rem .75rem; border-radius: 5px; font-weight: 900; "
+//         );
+
+//         // Initialize 'lastY' to the current scroll position
+//         this.lastY = window.scrollY;
+
+//         // Initialize 'window.sticky.nav' and 'window.sticky.at' based on the selector
+//         window.sticky = {
+//           nav: document.querySelector(`nav`),
+//           at: 0, // Initialize 'at' property to zero (or set it to the appropriate value)
+//         };
+
+//         // Add scroll event listeners
+//         this.addEventListeners();
+//       }
+
+//       addEventListeners() {
+//         if (window.sticky.nav) {
+//           // Add event listeners for 'DOMContentLoaded' and 'scroll'
+//           window.addEventListener("DOMContentLoaded", this.maybeHideNav, false);
+//           document.addEventListener("scroll", this.maybeHideNav, false);
+//         }
+//       }
+
+//       removeEventListeners() {
+//         if (window.sticky.nav) {
+//           // Remove event listeners for 'DOMContentLoaded' and 'scroll' when the component unmounts
+//           window.removeEventListener(
+//             "DOMContentLoaded",
+//             this.maybeHideNav,
+//             false
+//           );
+//           document.removeEventListener("scroll", this.maybeHideNav, false);
+//         }
+//       }
+
+//       getPosition(e: HTMLElement | null, top: boolean) {
+//         let offset = 0;
+
+//         if (e) {
+//           if (top) {
+//             // Calculate the position offset from the top
+//             offset =
+//               e.getBoundingClientRect().top +
+//               document.documentElement.scrollTop -
+//               window.sticky.at;
+//           } else {
+//             // Calculate the position offset from the bottom
+//             offset =
+//               e.getBoundingClientRect().bottom +
+//               document.documentElement.scrollTop -
+//               window.sticky.at;
+//           }
+//         }
+
+//         return offset;
+//       }
+
+//       maybeHideNav() {
+//         /**
+//          * If scrolling down, else if scrolling up
+//          *
+//          * Add or remove the 'hidden' class from the navigation menu
+//          */
+//         const nC = window.sticky.nav!.classList;
+//         const hiddenAt = window.innerHeight / 2;
+
+//         if (
+//           window.scrollY > this.lastY &&
+//           window.scrollY > hiddenAt &&
+//           !nC.contains(css.hidden)
+//         ) {
+//           // Add 'hidden' class when scrolling down
+//           nC.add(css.hidden);
+//         } else if (window.scrollY < this.lastY && nC.contains(css.hidden)) {
+//           // Remove 'hidden' class when scrolling up
+//           nC.remove(css.hidden);
+//         }
+
+//         /**
+//          * At the end of every scroll event, update the previous position
+//          */
+//         this.lastY = window.scrollY;
+//       }
+//     }
+
+//     // Create an instance of 'ScrollEventsImpl' and set up scroll event listeners
+//     const scrollEvents = new ScrollEventsImpl();
+
+//     // Clean up scroll event listeners when the component unmounts
+//     return () => {
+//       scrollEvents.removeEventListeners();
+//     };
+//   }, []);
+
+//   // Function to toggle the menu state
+//   const toggleMenu = () => {
+//     let bool = !menuState;
+//     menuToggle(bool);
+//   };
+
+//   // JSX: Render the navigation menu
+//   return (
+//     <nav id="Navbar" className={css.container}>
+//       <ul className={css.menu}>
+//         <li className={css.menuHeader}>
+//           <Link className={css.logo} href="/">
+//             {settings.name}
+//           </Link>
+
+
+
+//           <button
+//             onClick={toggleMenu}
+//             className={css.mobileToggle}
+//             data-open={menuState}
+//           >
+//             <div>
+//               <span></span>
+//               <span></span>
+//             </div>
+//           </button>
+//         </li>
+//         <li data-open={menuState} className={css.menuContent}>
+//           <ul>
+//             {content.map(({ url, title }, index) => {
+//               return (
+//                 <li key={index}>
+//                   <Link href={url}>{title}</Link>
+//                 </li>
+//               );
+//             })}
+//             <li>
+//               <ThemeMode />
+//             </li>
+//             <li>{signInContent}</li>
+//           </ul>
+//         </li>
+//       </ul>
+
+//       <span
+//         onClick={toggleMenu}
+//         className={css.menuBlackout}
+//         data-open={menuState}
+//       ></span>
+//     </nav>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useEffect, useState } from "react"; 
+// import { useRouter } from "next/router"; 
+// import Link from "next/link"; 
+// import ThemeMode from "../utils/theme";
+// import { ChevronDown, ChevronUp } from 'lucide-react';
+// import settings from "../../content/_settings.json"; 
+// import content from "../../content/navbar.json"; 
+// import css from "../../styles/scss/structure/navbar.module.scss"; 
+// import Cookies from "js-cookie"; 
+// import Image from "next/image"; 
+
+// declare global {
+//   interface Window {
+//     sticky: {
+//       nav: HTMLElement | null;
+//       at: number;
+//     };
+//   }
+// }
+
+// interface RouteEvents {
+//   addEventListeners: () => void;
+//   removeEventListeners: () => void;
+//   closeMenu: () => void;
+// }
+
+// interface ScrollEvents {
+//   addEventListeners: () => void;
+//   removeEventListeners: () => void;
+//   getPosition: (e: HTMLElement | null, top: boolean) => number;
+//   maybeHideNav: () => void;
+// }
+
+// // Add dropdown items interface
+// interface DropdownItem {
+//   title: string;
+//   url: string;
+// }
+
+// export default function Navbar() {
+//   const router = useRouter();
+//   const [menuState, menuToggle] = useState<boolean | undefined>();
+//   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+//   const email = Cookies.get("email");
+//   const password = Cookies.get("password");
+
+//   // Dropdown items
+//   const dropdownItems: DropdownItem[] = [
+//     { title: 'Tools', url: './pages/tools' },
+//     { title: 'Option 2', url: '#' },
+//     { title: 'Option 3', url: '#' }
+//   ];
+
+//   let signInContent;
+
+//   if (email && password) {
+//     signInContent = (
+//       <div className={css.circleImage}>
+//         <Image
+//           src="/img/user.jpg"
+//           width={34}
+//           height={34}
+//           alt="Profile Image"
+//           loading="eager"
+//         />
+//       </div>
+//     );
+//   } else {
+//     signInContent = (
+//       <button className={css.signInButton}>
+//         <Link href="/signin">Sign In</Link>
+//       </button>
+//     );
+//   }
+
+//   useEffect(() => {
+//     menuToggle(false);
+//     setDropdownOpen(false);
+//   }, []);
+
+//   // Rest of your existing useEffects...
+//   // (Keep your RouteEvents and ScrollEvents implementations unchanged)
+
+//   const toggleMenu = () => {
+//     let bool = !menuState;
+//     menuToggle(bool);
+//   };
+
+//   const toggleDropdown = (e: React.MouseEvent) => {
+//     e.preventDefault();
+//     setDropdownOpen(!dropdownOpen);
+//   };
+
+//   return (
+//     <nav id="Navbar" className={css.container}>
+//       <ul className={css.menu}>
+//         <li className={css.menuHeader}>
+//           <Link className={css.logo} href="/">
+//             {settings.name}
+//           </Link>
+
+//           <button
+//             onClick={toggleMenu}
+//             className={css.mobileToggle}
+//             data-open={menuState}
+//           >
+//             <div>
+//               <span></span>
+//               <span></span>
+//             </div>
+//           </button>
+//         </li>
+//         <li data-open={menuState} className={css.menuContent}>
+//           <ul>
+//             {content.map(({ url, title }, index) => {
+//               return (
+//                 <li key={index}>
+//                   <Link href={url}>{title}</Link>
+//                 </li>
+//               );
+//             })}
+//             {/* Dropdown Menu */}
+//             <li className={css.dropdownContainer}>
+//               <button 
+//                 onClick={toggleDropdown}
+//                 className={css.dropdownButton}
+//               >
+//                 Other
+//                 {dropdownOpen ? (
+//                   <ChevronUp className={css.dropdownIcon} />
+//                 ) : (
+//                   <ChevronDown className={css.dropdownIcon} />
+//                 )}
+//               </button>
+//               {dropdownOpen && (
+//                 <div className={css.dropdownMenu}>
+//                   {dropdownItems.map((item, index) => (
+//                     <Link 
+//                       key={index} 
+//                       href={item.url}
+//                       className={css.dropdownItem}
+//                       onClick={(e) => e.preventDefault()}
+//                     >
+//                       {item.title}
+//                     </Link>
+//                   ))}
+//                 </div>
+//               )}
+//             </li>
+//             <li>
+//               <ThemeMode />
+//             </li>
+//             {/* <li>{signInContent}</li> */}
+//           </ul>
+//         </li>
+//       </ul>
+
+//       <span
+//         onClick={toggleMenu}
+//         className={css.menuBlackout}
+//         data-open={menuState}
+//       ></span>
+//     </nav>
+//   );
+// }
+
+
+
+
 import { useEffect, useState } from "react"; 
 import { useRouter } from "next/router"; 
 import Link from "next/link"; 
 import ThemeMode from "../utils/theme";
-
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import settings from "../../content/_settings.json"; 
 import content from "../../content/navbar.json"; 
-import css from "../../styles/scss/structure/navbar.module.scss"; 
-import Cookies from "js-cookie"; 
-import Image from "next/image"; 
+import css from "../../styles/scss/structure/navbar.module.scss";
 
 declare global {
   interface Window {
@@ -18,7 +466,6 @@ declare global {
   }
 }
 
-// Define interfaces for route and scroll events
 interface RouteEvents {
   addEventListeners: () => void;
   removeEventListeners: () => void;
@@ -32,194 +479,38 @@ interface ScrollEvents {
   maybeHideNav: () => void;
 }
 
-// Define the functional component 'Navbar'
+// Add dropdown items interface
+interface MenuItem {
+  title: string;
+  url: string;
+  subMenu?: DropdownItem[];
+}
+
+interface DropdownItem {
+  title: string;
+  url: string;
+}
+
 export default function Navbar() {
-  // Initialize router and state variables
   const router = useRouter();
   const [menuState, menuToggle] = useState<boolean | undefined>();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  // Retrieve email and password cookies
-  const email = Cookies.get("email");
-  const password = Cookies.get("password");
-
-  let signInContent; // Declare a variable to hold sign-in content
-
-  // Determine the sign-in content based on cookie existence
-  if (email && password) {
-    // If email and password cookies exist, show the user's profile image
-    signInContent = (
-      <div className={css.circleImage}>
-        <Image
-          src="/img/user.jpg"
-          width={34}
-          height={34}
-          alt="Profile Image"
-          loading="eager"
-        />
-      </div>
-    );
-  } else {
-    // If email and password cookies do not exist, show the "Sign In" button
-    signInContent = (
-      <button className={css.signInButton}>
-        <Link href="/signin">Sign In</Link>
-      </button>
-    );
-  }
-
-  // useEffect: Set the initial menu state to false
   useEffect(() => {
     menuToggle(false);
+    setDropdownOpen(false);
   }, []);
 
-  // useEffect: Define and manage route change events
-  useEffect(() => {
-    // Define a class for route change events
-    class RouteEventsImpl implements RouteEvents {
-      constructor() {
-        console.log(
-          "%c☰  Navigation Router Events Loaded",
-          "background: #060708; color: #fff; padding: .125rem .75rem; border-radius: 5px; font-weight: 900; "
-        );
-        this.addEventListeners();
-      }
-
-      closeMenu() {
-        // Close the menu by setting 'menuState' to false
-        menuToggle(false);
-      }
-
-      addEventListeners() {
-        // Add an event listener for 'routeChangeComplete'
-        router.events.on("routeChangeComplete", this.closeMenu);
-      }
-
-      removeEventListeners() {
-        // Remove the event listener for 'routeChangeComplete' when the component unmounts
-        router.events.off("routeChangeComplete", this.closeMenu);
-      }
-    }
-
-    // Create an instance of 'RouteEventsImpl' and set up event listeners
-    const routeEvents = new RouteEventsImpl();
-
-    // Clean up event listeners when the component unmounts
-    return () => {
-      routeEvents.removeEventListeners();
-    };
-  }, [router.events]);
-
-  // useEffect: Define and manage scroll events
-  useEffect(() => {
-    // Define a class for scroll events
-    class ScrollEventsImpl implements ScrollEvents {
-      lastY: number;
-
-      constructor() {
-        console.log(
-          "%c▼  Navigation Scroll Events Loaded",
-          "background: #060708; color: #fff; padding: .125rem .75rem; border-radius: 5px; font-weight: 900; "
-        );
-
-        // Initialize 'lastY' to the current scroll position
-        this.lastY = window.scrollY;
-
-        // Initialize 'window.sticky.nav' and 'window.sticky.at' based on the selector
-        window.sticky = {
-          nav: document.querySelector(`nav`),
-          at: 0, // Initialize 'at' property to zero (or set it to the appropriate value)
-        };
-
-        // Add scroll event listeners
-        this.addEventListeners();
-      }
-
-      addEventListeners() {
-        if (window.sticky.nav) {
-          // Add event listeners for 'DOMContentLoaded' and 'scroll'
-          window.addEventListener("DOMContentLoaded", this.maybeHideNav, false);
-          document.addEventListener("scroll", this.maybeHideNav, false);
-        }
-      }
-
-      removeEventListeners() {
-        if (window.sticky.nav) {
-          // Remove event listeners for 'DOMContentLoaded' and 'scroll' when the component unmounts
-          window.removeEventListener(
-            "DOMContentLoaded",
-            this.maybeHideNav,
-            false
-          );
-          document.removeEventListener("scroll", this.maybeHideNav, false);
-        }
-      }
-
-      getPosition(e: HTMLElement | null, top: boolean) {
-        let offset = 0;
-
-        if (e) {
-          if (top) {
-            // Calculate the position offset from the top
-            offset =
-              e.getBoundingClientRect().top +
-              document.documentElement.scrollTop -
-              window.sticky.at;
-          } else {
-            // Calculate the position offset from the bottom
-            offset =
-              e.getBoundingClientRect().bottom +
-              document.documentElement.scrollTop -
-              window.sticky.at;
-          }
-        }
-
-        return offset;
-      }
-
-      maybeHideNav() {
-        /**
-         * If scrolling down, else if scrolling up
-         *
-         * Add or remove the 'hidden' class from the navigation menu
-         */
-        const nC = window.sticky.nav!.classList;
-        const hiddenAt = window.innerHeight / 2;
-
-        if (
-          window.scrollY > this.lastY &&
-          window.scrollY > hiddenAt &&
-          !nC.contains(css.hidden)
-        ) {
-          // Add 'hidden' class when scrolling down
-          nC.add(css.hidden);
-        } else if (window.scrollY < this.lastY && nC.contains(css.hidden)) {
-          // Remove 'hidden' class when scrolling up
-          nC.remove(css.hidden);
-        }
-
-        /**
-         * At the end of every scroll event, update the previous position
-         */
-        this.lastY = window.scrollY;
-      }
-    }
-
-    // Create an instance of 'ScrollEventsImpl' and set up scroll event listeners
-    const scrollEvents = new ScrollEventsImpl();
-
-    // Clean up scroll event listeners when the component unmounts
-    return () => {
-      scrollEvents.removeEventListeners();
-    };
-  }, []);
-
-  // Function to toggle the menu state
   const toggleMenu = () => {
     let bool = !menuState;
     menuToggle(bool);
   };
 
-  // JSX: Render the navigation menu
+  const toggleDropdown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setDropdownOpen(!dropdownOpen);
+  };
+
   return (
     <nav id="Navbar" className={css.container}>
       <ul className={css.menu}>
@@ -227,8 +518,6 @@ export default function Navbar() {
           <Link className={css.logo} href="/">
             {settings.name}
           </Link>
-
-
 
           <button
             onClick={toggleMenu}
@@ -243,8 +532,36 @@ export default function Navbar() {
         </li>
         <li data-open={menuState} className={css.menuContent}>
           <ul>
-            {content.map(({ url, title }, index) => {
-              return (
+            {content.map(({ url, title, subMenu }: MenuItem, index) => {
+              return subMenu ? (
+                <li key={index} className={css.dropdownContainer}>
+                  <button 
+                    onClick={toggleDropdown}
+                    className={css.dropdownButton}
+                  >
+                    {title}
+                    {dropdownOpen ? (
+                      <ChevronUp className={css.dropdownIcon} />
+                    ) : (
+                      <ChevronDown className={css.dropdownIcon} />
+                    )}
+                  </button>
+                  {dropdownOpen && (
+                    <div className={css.dropdownMenu}>
+                      {subMenu.map((item, subIndex) => (
+                        <Link 
+                          key={subIndex} 
+                          href={item.url}
+                          className={css.dropdownItem}
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </li>
+              ) : (
                 <li key={index}>
                   <Link href={url}>{title}</Link>
                 </li>
@@ -253,7 +570,7 @@ export default function Navbar() {
             <li>
               <ThemeMode />
             </li>
-            <li>{signInContent}</li>
+            {/* <li>{signInContent}</li> */}
           </ul>
         </li>
       </ul>

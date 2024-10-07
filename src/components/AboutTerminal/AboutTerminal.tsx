@@ -10,9 +10,7 @@ const AboutTerminal: React.FC = () => {
     (document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light') : 
     'dark';
   
-  // const content = info({ colorMode });
   const content = info(colorMode);
-
 
   useEffect(() => {
     if (visibleIndex === content.length - 1) {
@@ -31,6 +29,13 @@ const AboutTerminal: React.FC = () => {
     return () => window.removeEventListener('keypress', handleKeyPress);
   }, [visibleIndex]);
 
+  // Handle both click and touch events
+  const handleInteraction = () => {
+    if (visibleIndex === -1) {
+      setVisibleIndex(0);
+    }
+  };
+
   return (
     <div className={styles.terminalContainer}>
       <div className={styles.terminalHeader}>
@@ -43,7 +48,17 @@ const AboutTerminal: React.FC = () => {
           {finished ? 'Executed' : 'Executing'}: introduceSelf.js
         </div>
       </div>
-      <div className={styles.terminalBody}>
+      <div 
+        className={styles.terminalBody}
+        onClick={handleInteraction}
+        role="button"
+        tabIndex={0}
+        onKeyPress={(e) => {
+          if (e.key === 'Enter') {
+            handleInteraction();
+          }
+        }}
+      >
         <div className={styles.terminalBackground}></div>
         <div className={styles.content}>
           {visibleIndex === -1 ? (
@@ -53,7 +68,7 @@ const AboutTerminal: React.FC = () => {
                 self.learnAboutMe()
               </div>
               <div className={styles.statement}>
-                Press enter to see what I am about
+                {window.innerWidth <= 768 ? 'Tap' : 'Press enter'} to see what I am about
                 <span className={styles.cursor}></span>
               </div>
             </>
