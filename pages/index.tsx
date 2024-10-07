@@ -4,76 +4,6 @@
 // import dynamic from "next/dynamic";
 
 // // Dynamic imports
-// const LoadingAnim = dynamic(() => import("../src/components/intro/loadinganim"), { ssr: false });
-// const Hero = dynamic(() => import("../src/components/sections/index/hero"));
-// const Looking = dynamic(() => import("../src/components/sections/index/looking"));
-// const About = dynamic(() => import("../src/components/sections/index/home"));
-// const Technical = dynamic(() => import("../src/components/sections/index/technical"));
-// const Career = dynamic(() => import("../src/components/sections/index/optional/career"));
-// const FeaturedProjects = dynamic(() => import("../src/components/sections/projects/featured"));
-// const QnA = dynamic(() => import("../src/components/sections/index/qna"));
-// const Color = dynamic(() => import("../src/components/utils/page.colors"));
-// import settings from "../src/content/_settings.json";
-// import GithubGraphSection from "../src/components/sections/index/github.graph";
-// import AboutTerminal from "../src/components/AboutTerminal";
-
-// interface HomePageProps {
-//   spacing: string[];
-// }
-
-// export default function HomePage({ spacing }: HomePageProps) {
-//   const [componentsLoaded, setComponentsLoaded] = useState(false);
-
-//   useEffect(() => {
-//     const timer = setTimeout(() => {
-//       setComponentsLoaded(true);
-//     }, 2000);
-//     return () => clearTimeout(timer);
-//   }, []);
-
-//   const renderContent = () => (
-//     <div>
-//       <Hero />
-//       <Looking />
-//       <AboutTerminal />
-//       <About />
-//       <GithubGraphSection />
-//       <FeaturedProjects />
-//       <Technical />
-//       <Career />
-//       <QnA />
-//     </div>
-//   );
-
-//   return (
-//     <div>
-//       <TitleIndex />
-//       <Color colors={colors} />
-//       {/* Remove splash screen condition temporarily to debug */}
-//       {settings.splashscreen && !componentsLoaded ? (
-//         <LoadingAnim />
-//       ) : (
-//         renderContent()
-//       )}
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-// import React, { useState, useEffect } from "react";
-// import colors from "../src/content/index/_colors.json";
-// import TitleIndex from "./title.index";
-// import dynamic from "next/dynamic";
-
-// // Dynamic imports
 // const Hero = dynamic(() => import("../src/components/sections/index/hero"));
 // const Looking = dynamic(() => import("../src/components/sections/index/looking"));
 // const About = dynamic(() => import("../src/components/sections/index/home"));
@@ -133,7 +63,6 @@ import dynamic from "next/dynamic";
 import colors from "../src/content/index/_colors.json";
 import TitleIndex from "./title.index";
 
-// Dynamic imports for components
 const Hero = dynamic(() => import("../src/components/sections/index/hero"));
 const Looking = dynamic(() => import("../src/components/sections/index/looking"));
 const About = dynamic(() => import("../src/components/sections/index/home"));
@@ -189,7 +118,6 @@ export default function HomePage({ spacing }: HomePageProps) {
     <div>
       <TitleIndex />
       <Color colors={colors} />
-      {/* Show the confetti effect if it's the first time */}
       {showConfetti && <ConfettiComponent onComplete={() => setShowConfetti(false)} />}
       {renderContent()}
     </div>
