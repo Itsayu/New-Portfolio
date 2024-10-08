@@ -448,13 +448,303 @@
 
 
 
-import { useEffect, useState } from "react"; 
-import { useRouter } from "next/router"; 
-import Link from "next/link"; 
+// import { useEffect, useState } from "react"; 
+// import { useRouter } from "next/router"; 
+// import Link from "next/link"; 
+// import ThemeMode from "../utils/theme";
+// import { ChevronDown, ChevronUp } from 'lucide-react';
+// import settings from "../../content/_settings.json"; 
+// import content from "../../content/navbar.json"; 
+// import css from "../../styles/scss/structure/navbar.module.scss";
+
+// declare global {
+//   interface Window {
+//     sticky: {
+//       nav: HTMLElement | null;
+//       at: number;
+//     };
+//   }
+// }
+
+// interface RouteEvents {
+//   addEventListeners: () => void;
+//   removeEventListeners: () => void;
+//   closeMenu: () => void;
+// }
+
+// interface ScrollEvents {
+//   addEventListeners: () => void;
+//   removeEventListeners: () => void;
+//   getPosition: (e: HTMLElement | null, top: boolean) => number;
+//   maybeHideNav: () => void;
+// }
+
+// // Add dropdown items interface
+// interface MenuItem {
+//   title: string;
+//   url: string;
+//   subMenu?: DropdownItem[];
+// }
+
+// interface DropdownItem {
+//   title: string;
+//   url: string;
+// }
+
+// export default function Navbar() {
+//   const router = useRouter();
+//   const [menuState, menuToggle] = useState<boolean | undefined>();
+//   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+//   useEffect(() => {
+//     menuToggle(false);
+//     setDropdownOpen(false);
+//   }, []);
+
+//   const toggleMenu = () => {
+//     let bool = !menuState;
+//     menuToggle(bool);
+//   };
+
+//   const toggleDropdown = (e: React.MouseEvent) => {
+//     e.preventDefault();
+//     setDropdownOpen(!dropdownOpen);
+//   };
+
+//   return (
+//     <nav id="Navbar" className={css.container}>
+//       <ul className={css.menu}>
+//         <li className={css.menuHeader}>
+//           <Link className={css.logo} href="/">
+//             {settings.name}
+//           </Link>
+
+//           <button
+//             onClick={toggleMenu}
+//             className={css.mobileToggle}
+//             data-open={menuState}
+//           >
+//             <div>
+//               <span></span>
+//               <span></span>
+//             </div>
+//           </button>
+//         </li>
+//         <li data-open={menuState} className={css.menuContent}>
+//           <ul>
+//             {content.map(({ url, title, subMenu }: MenuItem, index) => {
+//               return subMenu ? (
+//                 <li key={index} className={css.dropdownContainer}>
+//                   <button 
+//                     onClick={toggleDropdown}
+//                     className={css.dropdownButton}
+//                   >
+//                     {title}
+//                     {dropdownOpen ? (
+//                       <ChevronUp className={css.dropdownIcon} />
+//                     ) : (
+//                       <ChevronDown className={css.dropdownIcon} />
+//                     )}
+//                   </button>
+//                   {dropdownOpen && (
+//                     <div className={css.dropdownMenu}>
+//                       {subMenu.map((item, subIndex) => (
+//                         <Link 
+//                           key={subIndex} 
+//                           href={item.url}
+//                           className={css.dropdownItem}
+//                           onClick={(e) => e.preventDefault()}
+//                         >
+//                           {item.title}
+//                         </Link>
+//                       ))}
+//                     </div>
+//                   )}
+//                 </li>
+//               ) : (
+//                 <li key={index}>
+//                   <Link href={url}>{title}</Link>
+//                 </li>
+//               );
+//             })}
+//             <li>
+//               <ThemeMode />
+//             </li>
+//             {/* <li>{signInContent}</li> */}
+//           </ul>
+//         </li>
+//       </ul>
+
+//       <span
+//         onClick={toggleMenu}
+//         className={css.menuBlackout}
+//         data-open={menuState}
+//       ></span>
+//     </nav>
+//   );
+// }
+
+
+
+
+
+// import { useEffect, useState } from "react";
+// import { useRouter } from "next/router";
+// import Link from "next/link";
+// import ThemeMode from "../utils/theme";
+// import { ChevronDown, ChevronUp } from "lucide-react";
+// import settings from "../../content/_settings.json";
+// import content from "../../content/navbar.json";
+// import css from "../../styles/scss/structure/navbar.module.scss";
+
+// declare global {
+//   interface Window {
+//     sticky: {
+//       nav: HTMLElement | null;
+//       at: number;
+//     };
+//   }
+// }
+
+// interface RouteEvents {
+//   addEventListeners: () => void;
+//   removeEventListeners: () => void;
+//   closeMenu: () => void;
+// }
+
+// interface ScrollEvents {
+//   addEventListeners: () => void;
+//   removeEventListeners: () => void;
+//   getPosition: (e: HTMLElement | null, top: boolean) => number;
+//   maybeHideNav: () => void;
+// }
+
+// // Add dropdown items interface
+// interface MenuItem {
+//   title: string;
+//   url: string;
+//   subMenu?: DropdownItem[];
+// }
+
+// interface DropdownItem {
+//   title: string;
+//   url: string;
+// }
+
+// export default function Navbar() {
+//   const router = useRouter();
+//   const [menuState, menuToggle] = useState<boolean | undefined>();
+//   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+//   useEffect(() => {
+//     menuToggle(false);
+//     setDropdownOpen(false);
+//   }, []);
+
+//   const toggleMenu = () => {
+//     menuToggle(!menuState);
+//   };
+
+//   const closeMenu = () => {
+//     menuToggle(false);
+//     setDropdownOpen(false);
+//   };
+
+//   const toggleDropdown = (e: React.MouseEvent) => {
+//     e.preventDefault();
+//     setDropdownOpen(!dropdownOpen);
+//   };
+
+//   return (
+//     <nav id="Navbar" className={css.container}>
+//       <ul className={css.menu}>
+//         <li className={css.menuHeader}>
+//           <Link className={css.logo} href="/">
+//             {settings.name}
+//           </Link>
+
+//           <button
+//             onClick={toggleMenu}
+//             className={css.mobileToggle}
+//             data-open={menuState}
+//           >
+//             <div>
+//               <span></span>
+//               <span></span>
+//             </div>
+//           </button>
+//         </li>
+//         <li data-open={menuState} className={css.menuContent}>
+//           <ul>
+//             {content.map(({ url, title, subMenu }: MenuItem, index) => {
+//               return subMenu ? (
+//                 <li key={index} className={css.dropdownContainer}>
+//                   <button
+//                     onClick={toggleDropdown}
+//                     className={css.dropdownButton}
+//                   >
+//                     {title}
+//                     {dropdownOpen ? (
+//                       <ChevronUp className={css.dropdownIcon} />
+//                     ) : (
+//                       <ChevronDown className={css.dropdownIcon} />
+//                     )}
+//                   </button>
+//                   {dropdownOpen && (
+//                     <div className={css.dropdownMenu}>
+//                       {subMenu.map((item, subIndex) => (
+//                         <Link
+//                           key={subIndex}
+//                           href={item.url}
+//                           className={css.dropdownItem}
+//                           onClick={() => closeMenu()}
+//                         >
+//                           {item.title}
+//                         </Link>
+//                       ))}
+//                     </div>
+//                   )}
+//                 </li>
+//               ) : (
+//                 <li key={index}>
+//                   <Link href={url} onClick={() => closeMenu()}>
+//                     {title}
+//                   </Link>
+//                 </li>
+//               );
+//             })}
+//             <li>
+//               <ThemeMode />
+//             </li>
+//             {/* <li>{signInContent}</li> */}
+//           </ul>
+//         </li>
+//       </ul>
+
+//       <span
+//         onClick={toggleMenu}
+//         className={css.menuBlackout}
+//         data-open={menuState}
+//       ></span>
+//     </nav>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 import ThemeMode from "../utils/theme";
-import { ChevronDown, ChevronUp } from 'lucide-react';
-import settings from "../../content/_settings.json"; 
-import content from "../../content/navbar.json"; 
+import { ChevronDown, ChevronUp } from "lucide-react";
+import settings from "../../content/_settings.json";
+import content from "../../content/navbar.json";
 import css from "../../styles/scss/structure/navbar.module.scss";
 
 declare global {
@@ -502,13 +792,21 @@ export default function Navbar() {
   }, []);
 
   const toggleMenu = () => {
-    let bool = !menuState;
-    menuToggle(bool);
+    menuToggle(!menuState);
   };
 
-  const toggleDropdown = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setDropdownOpen(!dropdownOpen);
+  const closeMenu = () => {
+    menuToggle(false);
+    setDropdownOpen(false);
+  };
+
+  // Handle mouse enter and leave for dropdown
+  const handleMouseEnter = () => {
+    setDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setDropdownOpen(false);
   };
 
   return (
@@ -534,11 +832,10 @@ export default function Navbar() {
           <ul>
             {content.map(({ url, title, subMenu }: MenuItem, index) => {
               return subMenu ? (
-                <li key={index} className={css.dropdownContainer}>
-                  <button 
-                    onClick={toggleDropdown}
-                    className={css.dropdownButton}
-                  >
+                <li key={index} className={css.dropdownContainer}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}>
+                  <button className={css.dropdownButton}>
                     {title}
                     {dropdownOpen ? (
                       <ChevronUp className={css.dropdownIcon} />
@@ -549,11 +846,11 @@ export default function Navbar() {
                   {dropdownOpen && (
                     <div className={css.dropdownMenu}>
                       {subMenu.map((item, subIndex) => (
-                        <Link 
-                          key={subIndex} 
+                        <Link
+                          key={subIndex}
                           href={item.url}
                           className={css.dropdownItem}
-                          onClick={(e) => e.preventDefault()}
+                          onClick={() => closeMenu()}
                         >
                           {item.title}
                         </Link>
@@ -563,7 +860,9 @@ export default function Navbar() {
                 </li>
               ) : (
                 <li key={index}>
-                  <Link href={url}>{title}</Link>
+                  <Link href={url} onClick={() => closeMenu()}>
+                    {title}
+                  </Link>
                 </li>
               );
             })}

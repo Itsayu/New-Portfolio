@@ -16,7 +16,7 @@
 	  "title": "Other",
 	  "subMenu": [
 		{
-		  "url": "../../pages/tools",
+		  "url": "/tools",
 		  "title": "Tools"
 		},
 		{
