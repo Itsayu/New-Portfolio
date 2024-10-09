@@ -1,0 +1,336 @@
+
+// @import '../mixins';
+
+// .chatContainer {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     height: 65vh;
+//     max-width: 600px;
+//     margin: 0 auto;
+//     padding: 16px;
+//     background: var(--background-dim2);
+//     border-radius: 8px;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//     overflow: hidden;
+//   }
+
+//   .title {
+//     font-size: 2.5rem;
+//     margin-bottom: 2rem; 
+//     color: var(--primary); // Primary theme color
+//     text-align: center;
+//   }
+  
+//   .subtitle {
+//     margin-bottom: 2rem;
+//     text-align: center;
+//     color: #5f6a7a; 
+//     font-size: var(--font-xs);
+//     font-family: var(--font-sans);
+//     font-weight: 600;
+//     text-transform: uppercase;
+//     letter-spacing: .1rem;
+//   }
+
+  
+//   .chatBox {
+//     flex-grow: 1;
+//     overflow-y: auto;
+//     padding-right: 10px;
+//     margin-bottom: 16px;
+//     padding-top: 4rem;
+//     display: flex;
+//     flex-direction: column;
+//     scrollbar-width: none;
+//   }
+  
+//   .botMessage {
+//     background: #007bff;
+//     color: #fff;
+//     padding: 8px 12px;
+//     border-radius: 16px 16px 16px 0;
+//     margin-bottom: 10px;
+//     max-width: 70%;
+//     align-self: flex-start;
+//     word-break: break-word;
+//     text-align: start;
+//   }
+  
+//   .userMessage {
+//     background: #e0e0e0;
+//     color: #000;
+//     padding: 8px 12px;
+//     border-radius: 16px 16px 0 16px;
+//     margin-bottom: 1rem;
+//     max-width: 70%;
+//     align-self: flex-end;
+//     word-break: break-word;
+//     text-align: start;
+//   }
+  
+//   .inputContainer {
+//     display: flex;
+//     align-items: center;
+//     // gap: 8px;
+  
+//     .chatInput {
+//       flex-grow: 1;
+//       padding: 8px;
+//       border: 1px solid #ddd;
+//       border-radius: 24px;
+//       font-size: 16px;
+//       text-align: start;
+//       padding-inline: 1rem;
+
+//     }
+  
+//     .sendButton {
+//       background-color: #007bff;
+//       color: #fff;
+//       border: none;
+//       padding: 8px 16px;
+//       border-radius: 24px;
+//       cursor: pointer;
+//       transition: background-color 0.3s ease;
+  
+//       &:hover {
+//         background-color: #0056b3;
+//       }
+//     }
+//   }
+  
+//   @media (max-width: 600px) {
+//     .chatContainer {
+//       width: 100%;
+//       padding: 8px;
+//     }
+//   }
+
+
+  
+//   .buttonContainer {
+//     display: flex;
+//     gap: 8px;
+//     justify-content: center;
+//   }
+  
+//   .confirmButton {
+//     background-color: #007bff;
+//     color: #fff;
+//     border: none;
+//     padding: 8px 16px;
+//     border-radius: 24px;
+//     cursor: pointer;
+//     transition: background-color 0.3s ease;
+  
+//     &:hover {
+//       background-color: #0056b3;
+//     }
+//   }
+  
+
+//   .inputContainer {
+//     display: flex;
+//     align-items: center;
+//     margin-top: 10px;
+//   }
+  
+//   .chatInput {
+//     flex: 1;
+//     padding: 8px;
+//     border-radius: 4px;
+//     border: 1px solid #ccc;
+//     margin-right: 8px;
+//   }
+  
+//   .sendButton {
+//     background-color: #007bff;
+//     color: #fff;
+//     border: none;
+//     padding: 8px 16px;
+//     border-radius: 4px;
+//     cursor: pointer;
+//   }
+
+  
+//   .greetingMessage {
+//     text-align: center;
+//     font-weight: bold;
+//     font-size: 1.2em; /* Adjust font size as needed */
+//     margin: 10px 0; /* Space around the greeting */
+//   }
+  
+
+
+
+
+
+
+
+@import '../mixins';
+
+.chatContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 65vh;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 16px;
+    background: var(--background-dim2);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem; 
+    color: var(--primary); /* Primary theme color */
+    text-align: center;
+}
+
+.subtitle {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #5f6a7a; 
+    font-size: var(--font-xs);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+}
+
+.chatBox {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-bottom: 16px;
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin; 
+    scrollbar-color: #7ab2ee #f1f1f1;
+}
+
+.botMessage {
+    background: #007bff;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 16px 16px 16px 0;
+    margin-bottom: 10px;
+    max-width: 70%;
+    align-self: flex-start;
+    word-break: break-word;
+    text-align: start;
+}
+
+.userMessage {
+    background: #e0e0e0;
+    color: #000;
+    padding: 8px 12px;
+    border-radius: 16px 16px 0 16px;
+    margin-bottom: 1rem;
+    max-width: 70%;
+    align-self: flex-end;
+    word-break: break-word;
+    text-align: start;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.chatInput {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 24px;
+    font-size: 16px;
+    text-align: start;
+    padding-inline: 1rem;
+}
+
+.sendButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+
+@media (max-width: 600px) {
+    .chatContainer {
+        width: 100%;
+        padding: 8px;
+    }
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.confirmButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+
+.greetingMessage {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em; /* Adjust font size as needed */
+    margin: 10px 0; /* Space around the greeting */
+}
+
+
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  
+    .chatInput {
+      flex-grow: 1;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 24px;
+      font-size: 16px;
+      text-align: start;
+      padding-inline: 1rem;
+
+    }
+  
+    .sendButton {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
