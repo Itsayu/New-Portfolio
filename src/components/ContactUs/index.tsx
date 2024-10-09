@@ -537,7 +537,7 @@ export default function ChatContact() {
                     ? "Enter your mobile number..."
                     : step === 4
                     ? "Enter your email..."
-                    : "Any message..."
+                    : "Message..."
                 }
                 value={
                   step === 1
