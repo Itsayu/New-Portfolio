@@ -1,254 +1,4 @@
 // import React, { useState, useEffect } from "react";
-// import css from "../../styles/scss/structure/contact.module.scss";
-// import emailjs from "emailjs-com";
-
-// interface ChatMessage {
-//   sender: "bot" | "user";
-//   text: string;
-// }
-
-// export default function ChatContact() {
-//   const [messages, setMessages] = useState<ChatMessage[]>([]);
-//   const [userInput, setUserInput] = useState<string>("");
-//   const [userName, setUserName] = useState<string>("");
-//   const [userMobile, setUserMobile] = useState<string>("");
-//   const [userEmail, setUserEmail] = useState<string>("");
-//   const [userMessage, setUserMessage] = useState<string>("");
-//   const [step, setStep] = useState<number>(0);
-//   const [isWaitingForConfirmation, setIsWaitingForConfirmation] =
-//     useState<boolean>(true);
-//   const [greetingMessage, setGreetingMessage] = useState<string>("");
-
-//   useEffect(() => {
-//     const greeting = getGreeting();
-//     setMessages([{ sender: "bot", text: `Hello, a very ${greeting}` }]);
-
-//     const timer = setTimeout(() => {
-//       setMessages((prevMessages) => [
-//         ...prevMessages,
-//         { sender: "bot", text: "Shall we proceed?" },
-//       ]);
-//     }, 500);
-
-//     return () => clearTimeout(timer);
-//   }, []);
-
-//   const getGreeting = () => {
-//     const hour = new Date().getHours();
-//     if (hour < 12) return "good morning";
-//     if (hour < 18) return "good afternoon";
-//     return "good evening";
-//   };
-
-//   const handleYesClick = () => {
-//     setMessages((prevMessages) => [
-//       ...prevMessages,
-//       { sender: "user", text: "Yes" },
-//     ]);
-//     proceedToNextStep();
-//   };
-
-//   const handleNoClick = () => {
-//     setMessages((prevMessages) => [
-//       ...prevMessages,
-//       { sender: "user", text: "No" },
-//       {
-//         sender: "bot",
-//         text: "Okay, let me know when you are ready to proceed.",
-//       },
-//     ]);
-//     setIsWaitingForConfirmation(false);
-//   };
-
-//   const proceedToNextStep = () => {
-//     setIsWaitingForConfirmation(false);
-//     setStep(1); // Move to the next step
-//     setTimeout(() => {
-//       setMessages((prevMessages) => [
-//         ...prevMessages,
-//         { sender: "bot", text: "Please enter your name:" },
-//       ]);
-//     }, 1000);
-//   };
-
-//   const handleUserInput = () => {
-//     if (step === 1) {
-//       if (!userName.trim()) return; // Check if name is empty
-//       // Send user's name to messages
-//       setMessages((prevMessages) => [
-//         ...prevMessages,
-//         { sender: "user", text: userName },
-//       ]);
-
-//       // Set greeting message
-//       const greeting = `Hello, ${userName.split(" ")[0]}!`; // Extract first name for greeting
-
-//       // Add the greeting directly after the user input
-//       setMessages((prevMessages) => [
-//         ...prevMessages,
-//         { sender: "bot", text: greeting },
-//       ]);
-
-//       // Clear user input and set next step
-//       setUserInput("");
-//       setStep(step + 1);
-//       setUserName("");
-
-//       // Ask for mobile number immediately after greeting
-//       setTimeout(() => {
-//         setMessages((prevMessages) => [
-//           ...prevMessages,
-//           { sender: "bot", text: "Please enter your mobile number:" }, // Ask for mobile number
-//         ]);
-//       }, 500);
-//     } else if (step === 2) {
-//       if (!userMobile.trim()) return; // Check if mobile is empty
-//       setMessages((prevMessages) => [
-//         ...prevMessages,
-//         { sender: "user", text: userMobile },
-//       ]);
-//       setUserInput(""); // Clear user input
-//       setStep(step + 1);
-//       setUserMobile(""); // Clear mobile input
-//       setTimeout(() => {
-//         setMessages((prevMessages) => [
-//           ...prevMessages,
-//           { sender: "bot", text: "Please enter your email:" },
-//         ]);
-//       }, 1000);
-//     } else if (step === 3) {
-//       if (!userEmail.trim()) return; // Check if email is empty
-//       setMessages((prevMessages) => [
-//         ...prevMessages,
-//         { sender: "user", text: userEmail },
-//       ]);
-//       setUserInput(""); // Clear user input
-//       setStep(step + 1);
-//       setUserEmail(""); // Clear email input
-//       setTimeout(() => {
-//         setMessages((prevMessages) => [
-//           ...prevMessages,
-//           { sender: "bot", text: "Any message you want to leave for us?" },
-//         ]);
-//       }, 1000);
-//     } else if (step === 4) {
-//       setMessages((prevMessages) => [
-//         ...prevMessages,
-//         { sender: "user", text: userMessage },
-//       ]);
-//       setUserInput(""); // Clear user input
-//       sendEmail(); // Send email at the end of the conversation
-//       setTimeout(() => {
-//         setMessages((prevMessages) => [
-//           ...prevMessages,
-//           { sender: "bot", text: "Thank you! We will contact you soon." },
-//         ]);
-//       }, 1000);
-//       setStep(step + 1);
-//     }
-//   };
-
-//   const sendEmail = () => {
-//     const templateParams = {
-//       user_name: userName,
-//       user_mobile: userMobile,
-//       user_email: userEmail,
-//       user_message: userMessage,
-//     };
-
-//     emailjs
-//       .send(
-//         "your_service_id",
-//         "your_template_id",
-//         templateParams,
-//         "your_user_id"
-//       )
-//       .then((response) => {
-//         console.log("Email sent successfully!", response.status, response.text);
-//       })
-//       .catch((error) => {
-//         console.error("Failed to send email:", error);
-//       });
-//   };
-
-//   return (
-//     <>
-//       <p className={css.subtitle}>We'd love to hear from you!</p>
-//       <h1 className={css.title}>Contact Us</h1>
-//       <div className={css.chatContainer}>
-//         <div className={css.chatBox}>
-//           {messages.map((message, index) => (
-//             <div
-//               key={index}
-//               className={
-//                 message.sender === "bot" ? css.botMessage : css.userMessage
-//               }
-//             >
-//               {message.text}
-//             </div>
-//           ))}
-//           {greetingMessage && (
-//             <div className={css.greetingMessage}>{greetingMessage}</div> // Centered greeting message
-//           )}
-//         </div>
-
-//         {isWaitingForConfirmation ? (
-//           <div className={css.buttonContainer}>
-//             <button onClick={handleYesClick} className={css.confirmButton}>
-//               Yes
-//             </button>
-//             <button onClick={handleNoClick} className={css.confirmButton}>
-//               No
-//             </button>
-//           </div>
-//         ) : (
-//           step < 5 && (
-//             <div className={css.inputContainer}>
-//               <input
-//                 type="text"
-//                 placeholder={
-//                   step === 1
-//                     ? "Enter your name..."
-//                     : step === 2
-//                     ? "Enter your mobile number..."
-//                     : step === 3
-//                     ? "Enter your email..."
-//                     : "Any message..."
-//                 }
-//                 value={
-//                   step === 1
-//                     ? userName
-//                     : step === 2
-//                     ? userMobile
-//                     : step === 3
-//                     ? userEmail
-//                     : userMessage
-//                 }
-//                 onChange={(e) => {
-//                   if (step === 1) setUserName(e.target.value);
-//                   else if (step === 2) setUserMobile(e.target.value);
-//                   else if (step === 3) setUserEmail(e.target.value);
-//                   else setUserMessage(e.target.value);
-//                 }}
-//                 className={css.chatInput}
-//                 onKeyPress={(e) => e.key === "Enter" && handleUserInput()} // Allow sending with Enter
-//               />
-//               <button onClick={handleUserInput} className={css.sendButton}>
-//                 Send
-//               </button>
-//             </div>
-//           )
-//         )}
-//       </div>
-//     </>
-//   );
-// }
-
-
-
-
-
-// import React, { useState, useEffect } from "react";
 // import Link from "next/link"; // Import Link from Next.js
 // import css from "../../styles/scss/structure/contact.module.scss";
 // import emailjs from "emailjs-com";
@@ -509,15 +259,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
-
-
 import React, { useState, useEffect } from "react";
 import Link from "next/link"; // Import Link from Next.js
 import css from "../../styles/scss/structure/contact.module.scss";
@@ -584,7 +325,15 @@ export default function ChatContact() {
       { sender: "user", text: "No" },
       {
         sender: "bot",
-        text: "Okay, let me know when you are ready to proceed.",
+        text: "Okay, Visit again you are ready to proceed.",
+      },
+      {
+        sender: "bot",
+        text: "If you want to fill the from again, refresh the page and start again.",
+      },
+      {
+        sender: "bot",
+        text: "Thank you!",
       },
     ]);
     setIsWaitingForConfirmation(false);
@@ -691,7 +440,6 @@ export default function ChatContact() {
                 >
                   <FontAwesomeIcon icon={faLinkedin} />
                 </Link>{" "}
-                {" "}
                 <Link
                   href="https://twitter.com/its_AKT_"
                   target="_blank"
@@ -699,7 +447,6 @@ export default function ChatContact() {
                 >
                   <FontAwesomeIcon icon={faTwitter} />
                 </Link>{" "}
-                {" "}
                 <Link
                   href="https://www.instagram.com/its_a.k.t"
                   target="_blank"
@@ -707,7 +454,6 @@ export default function ChatContact() {
                 >
                   <FontAwesomeIcon icon={faInstagram} />
                 </Link>{" "}
-                {" "}
                 <Link
                   href="https://www.github.com/itsayu"
                   target="_blank"
@@ -763,7 +509,9 @@ export default function ChatContact() {
               {message.text}
             </div>
           ))}
-          {errorMessage && <div className={css.errorMessage}>{errorMessage}</div>}
+          {errorMessage && (
+            <div className={css.errorMessage}>{errorMessage}</div>
+          )}
         </div>
 
         {isWaitingForConfirmation ? (
@@ -804,7 +552,8 @@ export default function ChatContact() {
                 }
                 onChange={(e) => {
                   if (step === 1) setUserName(e.target.value);
-                  else if (step === 2) setUserCountry(e.target.value); // Update state for country
+                  else if (step === 2)
+                    setUserCountry(e.target.value); // Update state for country
                   else if (step === 3) setUserMobile(e.target.value);
                   else if (step === 4) setUserEmail(e.target.value);
                   else setUserMessage(e.target.value);
