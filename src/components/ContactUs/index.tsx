@@ -325,7 +325,7 @@ export default function ChatContact() {
       { sender: "user", text: "No" },
       {
         sender: "bot",
-        text: "Okay, Visit again you are ready to proceed.",
+        text: "Feel free to visit again when you're ready to proceed.",
       },
       {
         sender: "bot",
