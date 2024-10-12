@@ -21,7 +21,7 @@ export default function Career() {
 				<SectionTitle
 					title="Experience"
 					preTitle="Career"
-					subTitle="I am a Full Stack Developer, currently working in the project development field. My primary goal is to enhance my skills and expand my knowledge to gain valuable experience in complex project development. I am dedicated to continuously improving and staying updated with the latest advancements in the industry."
+					subTitle="I am a Full Stack Developer with experience in project development, focused on enhancing my skills and knowledge in complex projects. Proficient in front-end technologies like React.js, Next.Js and back-end frameworks such as Node.js, I am committed to continuous learning and staying updated with industry advancements to deliver robust, responsive web applications that optimize performance."
 				/>
 				<section className={career.area}>
 						<div className={career.position}>

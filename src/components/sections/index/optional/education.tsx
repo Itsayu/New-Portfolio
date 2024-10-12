@@ -23,6 +23,7 @@ export default function Education() {
               <span className={career.companyHeader}>
                 <h3>Chandigarh Group of Colleges</h3>
                 <h5>Jhanjeri, Mohali</h5>
+                <h5>2020 - 2024</h5>
               </span>
               <p>
                 I pursued my Bachelor&apos;s degree in Computer Science and

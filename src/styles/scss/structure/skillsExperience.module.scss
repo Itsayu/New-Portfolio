@@ -1,0 +1,296 @@
+@import '../mixins';
+
+.skillsContainer {
+    min-height: 100vh;
+    background-color: var(--background-dim);
+    color: #ffffff;
+  }
+  
+  .content {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    margin-inline: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .content {
+      padding: 3rem 1.5rem;
+    }
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 4rem; 
+    color: var(--primary); 
+    text-align: center;
+    padding-top: 7rem;
+  }
+  
+  @media (min-width: 640px) {
+    .title {
+      font-size: 3rem;
+    }
+  }
+  
+  .gridContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 7rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .gridContainer {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+  
+  .skillsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .skillCategory h2 {
+    font-size: 1rem;
+    color: #66E7C8;
+    margin-bottom: 2.5rem;
+    margin-top: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .skillCategory h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .skillGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .skillGrid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 640px) {
+    .skillGrid.tools {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .skillCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--background-dim2);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  // .skillCard:hover {
+  //   background-color: #0f172a;
+  // }
+  
+  @media (min-width: 640px) {
+    .skillCard {
+      padding: 1rem;
+    }
+  }
+  
+  .iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .iconContainer {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+  
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--primary) !important;
+  }
+  
+  @media (min-width: 640px) {
+    .icon {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  
+  .skillName {
+    font-size: 0.75rem !important;
+    text-align: center;
+    color: var(--primary);
+  }
+  
+  @media (min-width: 640px) {
+    .skillName {
+      font-size: 0.875rem !important;
+    }
+  }
+  
+  .experienceSection {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .experienceItem {
+    position: relative;
+    padding-left: 1.5rem;
+    border-left: 2px solid #66E7C8;
+  }
+  
+  @media (min-width: 640px) {
+    .experienceItem {
+      padding-left: 2rem;
+    }
+  }
+  
+  .timelineDot {
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #020817;
+    border: 2px solid #66E7C8;
+    border-radius: 50%;
+  }
+  
+  @media (min-width: 640px) {
+    .timelineDot {
+      left: -7px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+  
+  .experienceHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .experienceHeader {
+      gap: 1rem;
+    }
+  }
+  
+  .logoContainer {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  @media (min-width: 640px) {
+    .logoContainer {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+  
+  .logo {
+    border-radius: 50%;
+  }
+  
+  .companyInfo h3 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  @media (min-width: 640px) {
+    .companyInfo h3 {
+      font-size: 1.25rem;
+    }
+  }
+  
+  .period {
+    font-size: 0.75rem;
+    color: #9ca3af;
+  }
+  
+  @media (min-width: 640px) {
+    .period {
+      font-size: 0.875rem;
+    }
+  }
+  
+  .role {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .role {
+      font-size: 1rem;
+    }
+  }
+  
+  .description {
+    font-size: 0.75rem;
+    color: #9ca3af;
+  }
+  
+  @media (min-width: 640px) {
+    .description {
+      font-size: 0.875rem;
+    }
+  }
+
+
+
+
+
+// src/styles/scss/structure/skillsExperience.module.scss
+
+.skillsContainer {
+  // Define primary variable for light and dark modes
+  --primary: #333; /* Default color for light mode */
+
+  [data-theme='dark'] & {
+    --primary: #fff; /* Color for dark mode */
+  }
+
+  .iconContainer {
+    font-size: 1.4rem;
+    color: var(--primary); /* Use the --primary variable */
+  }
+
+  .skillCard {
+    
+    &:hover {
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon {
+      margin-right: 10px;
+      color: var(--primary); /* Set the color of the icons */
+    }
+
+    .skillName {
+      font-size: 1.2rem;
+      color: var(--primary); /* Set the text color */
+    }
+  }
+}

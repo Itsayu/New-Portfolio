@@ -1,19 +1,19 @@
 [
   {
-    "question": "Where are you currently studying?",
-    "answer": "I am currently studying computer science at the Velammal College of Engineering and Technology.",
+    "question": "Where did you complete your B.Tech?",
+    "answer": "I completed my studies in Computer Science at the Chandigarh Group of Colleges, Jhanjeri, Mohali.",
     "isOpen": false
 
   },
   {
     "question": "Have you worked on any projects?",
-    "answer": "Yes, in addition to my personal projects and hobbies, I have worked on several projects, both individually and in teams. These projects have allowed me to apply theoretical knowledge to real-world scenarios, honing my practical skills in software development, web technologies, and computer networks.",
+    "answer": "Yes, alongside my personal projects and hobbies, I have worked on several projects both individually and as part of a team. These experiences have enabled me to apply my theoretical knowledge to real-world situations, enhancing my practical skills in software development, web technologies, and computer networks.",
     "isOpen": false
 
   },
   {
     "question": "What extracurricular activities have you participated in?",
-    "answer": "I have actively participated in extracurricular activities and technical events on campus, which have provided me with opportunities to expand my knowledge, network with fellow students, and enhance my leadership and communication skills.",
+    "answer": "I have actively participated in extracurricular activities and technical events on campus, which have provided me with opportunities to expand my knowledge, network with fellow students, and enhance my leadership and communication skills. My diverse skill set, coupled with my leadership experience as Co-Founder and President of the D4 Community, highlights my commitment to continuous learning and fostering innovation within the tech community.",
     "isOpen": false
 
   },

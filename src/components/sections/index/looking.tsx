@@ -16,7 +16,7 @@ export default function Looking() {
 			<Container classProp={`${section.title} ${looking.container}`} spacing={['verticalXXXLrg']}>
 				<h4>I&apos;m currently looking for Jobs.</h4>
 				<h2 className={looking.json}>Jobs : &#123;</h2>
-				<h2 className={looking.jsonSub}><span className={looking.highlight}>Full Stack Developer</span>,</h2>
+				<h2 className={looking.jsonSub}><span className={looking.highlight}>Frontend Developer</span>,</h2>
 				<h2 className={looking.jsonSub}><span className={looking.highlight2}>Software Engineer</span></h2>
 				<h2 className={looking.json}>&#125;</h2>
 				<h4>I am particularly interested in product based positions where I can help make an organization wide impact.</h4>

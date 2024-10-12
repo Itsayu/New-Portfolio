@@ -1,32 +1,32 @@
 {
-	"intro": {
-		"start": "const myName = () =>",
-		"end": "Hey there!, my name is",
-		"speed": 60,
-		"deletionSpeed": 80,
-		"wrapper": "h2",
-		"startDelay": 1000,
-		"deleteDelay": 3000,
-		"restartDelay": 12000
-	},
+  "intro": {
+    "start": "const myName = () =>",
+    "end": "Hey there!, my name is",
+    "speed": 60,
+    "deletionSpeed": 80,
+    "wrapper": "h2",
+    "startDelay": 1000,
+    "deleteDelay": 3000,
+    "restartDelay": 12000
+  },
 
-	"header": {
-		"name": "Ayush Kumar Tiwari.",
-		"usp": "Passionate software Engineer."
-	},
+  "header": {
+    "name": "Ayush Kumar Tiwari.",
+    "usp": "Passionate software Engineer."
+  },
 
-	"paragraph": "From an early age, my fascination with programming and computers ignited a lifelong passion. Constantly learning and developing, I strive to make a profound impact through innovative solutions and visionary ideas, shaping the future with my unwavering commitment to technological advancement. ",
+  "paragraph": "From my first line of code, I was captivated by the potential of web development. With each project, I strive to push boundaries, creating seamless digital experiences that captivate users. My journey is driven by curiosity and a passion for innovation, aiming to make a positive impact through technology, one solution at a time.",
 
-	"buttons": {
-		"primary": {
-			"title": "Hire Me",
-			"url": "mailto:ayushtiwari.connect@gmail.com",
-			"leaveSite": false
-		},
-		"secondary": {
-			"title": "LinkedIn",
-			"url": "https://www.linkedin.com/in/itsayu/",
-			"leaveSite": "true"
-		}
-	}
+  "buttons": {
+    "primary": {
+      "title": "Hire Me",
+      "url": "mailto:ayushtiwari.connect@gmail.com",
+      "leaveSite": false
+    },
+    "secondary": {
+      "title": "LinkedIn",
+      "url": "https://www.linkedin.com/in/itsayu/",
+      "leaveSite": "true"
+    }
+  }
 }

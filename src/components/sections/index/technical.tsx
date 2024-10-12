@@ -70,9 +70,9 @@ export default function Technical() {
 const software = [
 	{ key: 'photoshop', 	name: 'Photoshop', 			type: 'devicon' },
 	{ key: 'figma', 		name: 'Figma', 				type: 'devicon' },
-	{ key: 'jetbrains', name: 'Jetbrains', type: 'devicon' },
+	{ key: 'jetbrains',     name: 'GitHub',             type: 'devicon' },
 	{ key: 'vscode', 		name: 'VSCode', 			type: 'devicon' },
-	{ key:'unrealengine',name:'UnrealEngine',type:'devicon' }
+	{ key: 'unrealengine',  name: 'UnrealEngine',       type: 'devicon' }
 
 
 
@@ -101,8 +101,5 @@ const tech = [
 	{ key: 'bootstrap', name: 'Bootstrap', type: 'devicon' },
 	{ key: 'npm', name: 'npm', type: 'devicon' },
 	{ key: 'yarn', name: 'Yarn', type: 'devicon' },
-	{key:"firebase",name:"Firebase",type:"devicon"}
-
-
-
+	{ key:"firebase",name:"Firebase",type:"devicon"}
 ];

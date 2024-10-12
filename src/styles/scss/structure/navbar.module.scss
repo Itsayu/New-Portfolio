@@ -259,11 +259,106 @@
 
 
 
-.dropdownContainer {
-	position: relative;
+// .dropdownContainer {
+// 	position: relative;
 	
+// 	@media (max-width: 768px) {
+// 	//   width: 100%;
+// 	}
+//   }
+  
+//   .dropdownButton {
+// 	display: flex;
+// 	align-items: center;
+// 	gap: 0.5rem;
+// 	padding: 0.5rem 1rem;
+// 	background: transparent;
+// 	border: none;
+// 	cursor: pointer;
+// 	font-size: inherit;
+// 	color: var(--primary-bright);
+// 	font-family: var(--font-accent);
+// 	font-weight: 700;
+		
+// 	&:hover {
+// 		color: var(--primary-dim);
+// 	}
+	
+// 	@media (max-width: 768px) {
+// 	  width: 100%;
+// 	  width: 100%;
+//         justify-content: center;
+//         align-items: center;
+// 	}
+//   }
+  
+//   .dropdownIcon {
+// 	width: 1rem;
+// 	height: 1rem;
+// 	transition: transform 0.2s ease;
+//   }
+  
+//   .dropdownMenu {
+// 	position: absolute;
+// 	top: 100%;
+// 	left: 0;
+// 	min-width: 200px;
+// 	background: rgba(255, 255, 255, 0.1);
+// 	backdrop-filter: blur(10px);
+// 	border-radius: 0.5rem;
+// 	padding: 0.5rem 0;
+// 	z-index: 1000;
+	
+// 	@media (max-width: 768px) {
+// 	  position: static;
+// 	  width: 100%;
+// 	  background: transparent;
+// 	  backdrop-filter: none;
+// 	  padding: 0;
+// 	}
+//   }
+  
+//   .dropdownItem {
+// 	display: block;
+// 	padding: 0.5rem 1rem;
+// 	color: inherit;
+// 	text-decoration: none;
+// 	transition: background-color 0.2s ease;
+	
+// 	&:hover {
+// 	  background: rgba(255, 255, 255, 0.2);
+// 	}
+	
+// 	@media (max-width: 768px) {
+// 	  padding: 0.75rem 2rem;
+// 	}
+//   }
+  
+//   // Modify your existing menuContent class to handle dropdown height
+//   .menuContent {
+// 	// ... your existing styles ...
+	
+// 	@media (max-width: 768px) {
+// 	  &[data-open="true"] {
+// 		max-height: none; // Allow content to determine height
+// 		opacity: 1;
+// 		visibility: visible;
+// 	  }
+// 	}
+//   }
+
+
+
+
+
+
+
+
+  .dropdownContainer {
+	position: relative;
+  
 	@media (max-width: 768px) {
-	//   width: 100%;
+	  width: 100%;
 	}
   }
   
@@ -279,16 +374,16 @@
 	color: var(--primary-bright);
 	font-family: var(--font-accent);
 	font-weight: 700;
-		
+	transition: color 0.3s ease, transform 0.3s ease;
+  
 	&:hover {
-		color: var(--primary-dim);
+	  color: var(--primary-dim);
 	}
-	
+  
 	@media (max-width: 768px) {
 	  width: 100%;
-	  width: 100%;
-        justify-content: center;
-        align-items: center;
+	  justify-content: center;
+	  align-items: center;
 	}
   }
   
@@ -300,49 +395,66 @@
   
   .dropdownMenu {
 	position: absolute;
-	top: 100%;
+	top: calc(100% + 0.20rem);
 	left: 0;
-	min-width: 200px;
-	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(10px);
+	min-width: 240px;
+	// background: rgb(174 174 174 / 15%);
+	background: var(--background-dim2);
+	backdrop-filter: blur(12px);
 	border-radius: 0.5rem;
-	padding: 0.5rem 0;
+	padding: 0.35rem 0;
+	box-shadow: 2px 4px 53px rgba(0, 0, 0, 0.04);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
 	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
 	
+  
 	@media (max-width: 768px) {
 	  position: static;
 	  width: 100%;
-	  background: transparent;
+	  background: none;
 	  backdrop-filter: none;
+	  border-radius: 0;
 	  padding: 0;
+	  align-items: center;
+	  box-shadow: none;
 	}
+  }
+  
+  .dropdownContainer:hover .dropdownMenu,
+  .dropdownContainer:focus-within .dropdownMenu {
+	opacity: 1;
+	visibility: visible;
   }
   
   .dropdownItem {
 	display: block;
-	padding: 0.5rem 1rem;
-	color: inherit;
+	padding: 0.5rem 1.5rem;
+	color: var(--primary-bright);
 	text-decoration: none;
-	transition: background-color 0.2s ease;
-	
+	transition: background-color 0.2s ease, color 0.2s ease;
+  
 	&:hover {
 	  background: rgba(255, 255, 255, 0.2);
+	  color: var(--accent-color);
 	}
-	
+  
 	@media (max-width: 768px) {
-	  padding: 0.75rem 2rem;
+	  padding: 0.75rem 1rem;
 	}
   }
   
-  // Modify your existing menuContent class to handle dropdown height
   .menuContent {
-	// ... your existing styles ...
-	
 	@media (max-width: 768px) {
 	  &[data-open="true"] {
-		max-height: none; // Allow content to determine height
+		max-height: none;
 		opacity: 1;
 		visibility: visible;
 	  }
 	}
   }
+  
