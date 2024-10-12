@@ -437,6 +437,8 @@
 	color: var(--primary-bright);
 	text-decoration: none;
 	transition: background-color 0.2s ease, color 0.2s ease;
+	width: 100%;
+	text-align: start;
   
 	&:hover {
 	  background: rgba(255, 255, 255, 0.2);
@@ -445,6 +447,7 @@
   
 	@media (max-width: 768px) {
 	  padding: 0.75rem 1rem;
+	  text-align: center;
 	}
   }
   
