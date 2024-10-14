@@ -19,11 +19,7 @@
 			"link": "/",
 			"note": ""
 		},
-		{ 
-			"person": "Documentations",
-			"link": "https://codescomet.com/",
-			"note": ""
-		},	{
+		{
 			"person": "Articles",
 			"link": "https://codescomet.com/",
 			"note": ""
@@ -37,6 +33,16 @@
 		{
 			"person": "Contact",
 			"link": "mailto:ayushtiwari.connect@gmail.com",
+			"note": ""
+		},
+		{ 
+			"person": "Documentations",
+			"link": "https://codescomet.com/",
+			"note": ""
+		},
+		{ 
+			"person": "Join Community",
+			"link": "https://d4-website-v1.vercel.app/linkpool",
 			"note": ""
 		}
 
