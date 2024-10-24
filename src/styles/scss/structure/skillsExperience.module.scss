@@ -1,17 +1,22 @@
 @import '../mixins';
 
 .skillsContainer {
-    min-height: 100vh;
-    background-color: var(--background-dim);
-    color: #ffffff;
-  }
-  
-  .content {
-    max-width: 1020px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    margin-inline: 1rem;
-  }
+  min-height: 100vh;
+  background-color: var(--background-dim);
+  color: #ffffff;
+  display: flex; // Add flexbox
+  align-items: center; // Center content vertically
+  justify-content: center; // Center content horizontally
+}
+
+.content {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  margin-inline: 1rem;
+  width: 100%;
+}
+
   
   @media (min-width: 640px) {
     .content {
