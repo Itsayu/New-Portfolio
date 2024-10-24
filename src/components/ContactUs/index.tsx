@@ -225,10 +225,10 @@ export default function ChatContact() {
 
     emailjs
       .send(
-        "your_service_id",
-        "your_template_id",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         templateParams,
-        "your_user_id"
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID!
       )
       .then((response) => {
         console.log("Email sent successfully!", response.status, response.text);
@@ -324,3 +324,5 @@ export default function ChatContact() {
     </>
   );
 }
+
+
