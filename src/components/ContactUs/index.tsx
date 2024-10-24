@@ -28,10 +28,8 @@ export default function ChatContact() {
   const [isWaitingForConfirmation, setIsWaitingForConfirmation] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>("");
   
-  // Add ref for chat box to handle auto-scrolling
   const chatBoxRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll effect
   useEffect(() => {
     if (chatBoxRef.current) {
       chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
