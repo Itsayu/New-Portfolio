@@ -1,0 +1,276 @@
+@import './mixins';
+
+.communityBody {
+    background-color: var(--background-dim);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    padding-top: 7rem;
+    max-width: 1020px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5rem;
+
+    @media (min-width: 992px) {
+        padding-top: 10rem;
+        padding-bottom: 6rem;
+    }
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+.subtitle {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #5f6a7a;
+    font-size: var(--font-xs);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+/* Filter Buttons */
+.filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.filterButton {
+    background-color: var(--background-dim2);
+    color: var(--text-color);
+    border: 1px solid var(--primary-dark);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: var(--primary-dark);
+        color: #fff;
+    }
+
+    &.active {
+        background-color: var(--primary);
+        color: #fff;
+    }
+}
+
+.section {
+    margin-bottom: 4rem;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.card {
+    background: var(--background-dim2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+    border: 1px solid var(--primary-dark);
+
+    &:hover {
+        transform: translateY(-5px);
+        border-color: #464646;
+    }
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--primary-dark);
+}
+
+.icon {
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+
+.headerContent {
+    flex: 1;
+}
+
+.communityName {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+.role {
+    color: #f87171;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary);
+}
+
+.activities {
+    border-top: 1px solid var(--primary-dark);
+    padding-top: 1rem;
+}
+
+.activitiesTitle {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.activitiesList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.activity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary);
+    font-size: 0.875rem;
+}
+
+.eventCard {
+    background: var(--background-dim2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+    border: 1px solid var(--primary-dark);
+
+    &:hover {
+        transform: translateY(-3px);
+        border-color: #464646;
+    }
+}
+
+.eventHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.eventTitle {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.eventType {
+    color: var(--secondary);
+    font-size: 0.875rem;
+}
+
+.eventMeta {
+    text-align: right;
+}
+
+.eventDate {
+    color: #f87171;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.eventLocation {
+    color: var(--secondary);
+    font-size: 0.875rem;
+}
+
+.joinButton, .joinButton:active, .joinButton:focus, .joinButton:hover {
+    color: #4c515a;
+}
+
+
+
+
+// .modalOverlay {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.7);
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     z-index: 1000;
+//     opacity: 0;
+//     visibility: hidden;
+//     transition: opacity 0.3s ease, visibility 0.3s ease;
+//   }
+  
+//   .modalOverlay.show {
+//     opacity: 1;
+//     visibility: visible;
+//   }
+  
+//   .modalContent {
+//     background-color: #ffffff;
+//     border-radius: 8px;
+//     padding: 2rem;
+//     max-width: 500px;
+//     width: 90%;
+//     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+//     position: relative;
+//   }
+  
+//   .closeButton {
+//     position: absolute;
+//     top: 1rem;
+//     right: 1rem;
+//     background: none;
+//     border: none;
+//     font-size: 1.5rem;
+//     cursor: pointer;
+//   }
+
+  
