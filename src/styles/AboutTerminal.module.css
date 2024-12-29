@@ -259,6 +259,9 @@
   border-top-right-radius: 1rem;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 10;
+  border-top: .2px solid #0b260b; /* Adjust the thickness and color */
+  border-left: .2px solid #0b260b;
+  border-right: .2px solid #0b260b;
 }
 
 /* Control Buttons */

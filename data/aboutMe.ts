@@ -85,10 +85,15 @@ const info = (colorMode: 'light' | 'dark'): ContentItem[] => [
     return: '[ "JavaScript", "Typescript", "React.Js", "Next.JS", "Bootstrap", "Tailwind", "SASS", "git"]',
   },
   {
+    input: 'community.organizer',
+    return: '[ "D4 Community", "ML Chandigarh" ]',
+  },
+  {
     input: 'self.contactMe()',
     return: `[
       ${createLink('https://www.linkedin.com/in/itsayu/', 'LinkedIn', colorMode)},
       ${createLink('https://github.com/itsayu', 'Github', colorMode)},
+      ${createLink('https://x.com/its_AKT_', 'Github', colorMode)},
       ${createLink('mailto:ayushtiwari.connect@gmail.com', 'Email', colorMode)}
     ]`,
   },
