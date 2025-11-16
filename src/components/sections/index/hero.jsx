@@ -63,7 +63,16 @@ export default function Hero() {
             {content.paragraph}
           </p>
         </section>
-        <section style={{ position: "relative" }}>
+        <section
+          style={{
+            position: "relative",
+            gap: "1rem",
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "flex-start",
+            flexDirection: "row",
+          }}
+        >
           <button
             className={`button ${button.primary}`}
             onClick={() =>
@@ -98,7 +107,10 @@ export default function Hero() {
           <button
             className={`button ${button.secondary} leaveSite`}
             onClick={() =>
-              window.open("https://drive.google.com/drive/folders/13ncmo_Bc6XPbUB24bceaTTAkgDcfso3y?usp=sharing", "_blank")
+              window.open(
+                "https://drive.google.com/drive/folders/13ncmo_Bc6XPbUB24bceaTTAkgDcfso3y?usp=sharing",
+                "_blank"
+              )
             }
             onMouseEnter={() => setIsYescatTooltipVisible(true)}
             onMouseLeave={() => setIsYescatTooltipVisible(false)}
