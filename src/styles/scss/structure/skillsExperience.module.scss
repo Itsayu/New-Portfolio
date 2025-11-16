@@ -1,12 +1,20 @@
-@import '../mixins';
+@use '../mixins' as *;
 
 .skillsContainer {
   min-height: 100vh;
   background-color: var(--background-dim);
   color: #ffffff;
-  display: flex; // Add flexbox
-  align-items: center; // Center content vertically
-  justify-content: center; // Center content horizontally
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  --primary: #333;
+  --accent-color: #66E7C8;
+  --card-bg: var(--background-dim2);
+
+  [data-theme='dark'] & {
+    --primary: #fff;
+  }
 }
 
 .content {
@@ -17,285 +25,440 @@
   width: 100%;
 }
 
-  
-  @media (min-width: 640px) {
-    .content {
-      padding: 3rem 1.5rem;
-    }
+@media (min-width: 640px) {
+  .content {
+    padding: 3rem 1.5rem;
   }
-  
-  .title {
-    font-size: 2.5rem;
-    margin-bottom: 4rem; 
-    color: var(--primary); 
+}
+
+.title {
+  // font-size: 2.5rem;
+  // margin-bottom: 4rem;
+  // color: var(--primary);
+  // text-align: center;
+  // padding-top: 7rem;
+  // font-weight: 700;
+  // background: linear-gradient(135deg, var(--primary) 0%, var(--accent-color) 100%);
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  // background-clip: text;
+  font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--primary);
     text-align: center;
     padding-top: 7rem;
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 3rem;
   }
-  
-  @media (min-width: 640px) {
-    .title {
-      font-size: 3rem;
-    }
-  }
-  
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5rem;
+}
+
+@media (min-width: 1024px) {
   .gridContainer {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 7rem;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
   }
-  
-  @media (min-width: 1024px) {
-    .gridContainer {
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-  }
-  
-  .skillsSection {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  
-  .skillCategory h2 {
-    font-size: 1rem;
-    color: #66E7C8;
+}
+
+/* ===== SKILLS SECTION ===== */
+.skillsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.skillCategory h2 {
+  // font-size: 1.25rem;
+  // color: var(--accent-color);
+  // margin-bottom: 1.5rem;
+  // font-weight: 600;
+  // position: relative;
+  // padding-bottom: 0.5rem;
+  font-size: 1rem;
+    color: #66e7c8;
     margin-bottom: 2.5rem;
     margin-top: 1rem;
+  
+  // &:after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 60px;
+  //   height: 3px;
+  //   background: linear-gradient(90deg, var(--accent-color), transparent);
+  //   border-radius: 2px;
+  // }
+}
+
+@media (min-width: 640px) {
+  .skillCategory h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .skillGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.skillCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1.25rem 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(102, 231, 200, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
   
-  @media (min-width: 640px) {
-    .skillCategory h2 {
-      font-size: 1.5rem;
+  &:hover {
+    // transform: translateY(-5px);
+    // border-color: var(--accent-color);
+    // box-shadow: 0 10px 30px rgba(102, 231, 200, 0.2);
+    
+    &:before {
+      opacity: 1;
+    }
+    
+    .iconContainer {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .skillCard {
+    padding: 1.5rem 1rem;
+  }
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.75rem;
+  color: var(--primary);
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .iconContainer {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2rem;
+  }
+}
+
+.skillName {
+  font-size: 0.875rem !important;
+  text-align: center;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@media (min-width: 640px) {
+  .skillName {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* ===== EXPERIENCE SECTION ===== */
+.experienceSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.experienceTitle {
+  // font-size: 1.5rem;
+  // color: var(--accent-color);
+  // margin-bottom: 1rem;
+  // font-weight: 600;
+  // position: relative;
+  // padding-bottom: 0.5rem;
+  font-size: 1rem;
+    color: #66e7c8;
+    margin-bottom: 2.5rem;
+    margin-top: 1rem;
+  
+  // &:after {
+  //   content: '';
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   width: 80px;
+  //   height: 3px;
+  //   background: linear-gradient(90deg, var(--accent-color), transparent);
+  //   border-radius: 2px;
+  // }
+}
+
+@media (min-width: 640px) {
+  .experienceTitle {
+    font-size: 1.75rem;
+  }
+}
+
+.timelineWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.experienceCard {
+  background: var(--card-bg);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  position: relative;
+  border: 1px solid rgba(102, 231, 200, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent-color), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateX(8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 40px rgba(102, 231, 200, 0.15);
+    
+    // &:before {
+    //   opacity: 1;
+    // }
+    
+    .cardDecoration {
+      transform: scale(1.5);
+      opacity: 0.3;
+    }
+    
+    .companyLogo {
+      transform: scale(1.05) rotate(3deg);
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .experienceCard {
+    padding: 2rem;
+  }
+}
+
+.currentRole {
+  border-color: var(--accent-color);
+  background: linear-gradient(135deg, var(--card-bg) 0%, rgba(102, 231, 200, 0.05) 100%);
+  box-shadow: 0 8px 32px rgba(102, 231, 200, 0.2);
+  
+  // &:before {
+  //   opacity: 1;
+  // }
+}
+
+.currentBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(102, 231, 200, 0.15);
+  color: var(--accent-color);
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border: 1px solid var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pulseIndicator {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 0 0 var(--accent-color);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(102, 231, 200, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(102, 231, 200, 0);
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.logoWrapper {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(102, 231, 200, 0.2);
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .logoWrapper {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.companyLogo {
+  border-radius: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.headerContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.companyName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+@media (min-width: 640px) {
+  .companyName {
+    font-size: 1.5rem;
+  }
+}
+
+.roleName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .roleName {
+    font-size: 1.05rem;
+  }
+}
+
+.periodText {
+  font-size: 0.8rem;
+  color: rgba(156, 163, 175, 0.9);
+  margin: 0;
+  font-weight: 500;
+}
+
+@media (min-width: 640px) {
+  .periodText {
+    font-size: 0.875rem;
+  }
+}
+
+.descriptionText {
+  font-size: 0.875rem;
+  color: rgba(156, 163, 175, 0.95);
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .descriptionText {
+    font-size: 0.95rem;
+  }
+}
+
+.cardDecoration {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  opacity: 0.1;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+/* Mobile specific improvements */
+@media (max-width: 640px) {
+  .experienceCard {
+    padding: 1.5rem;
+    
+    &:hover {
+      transform: translateX(4px);
     }
   }
   
-  .skillGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  .cardHeader {
     gap: 1rem;
   }
   
-  @media (min-width: 640px) {
-    .skillGrid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
+  .logoWrapper {
+    width: 50px;
+    height: 50px;
   }
   
-  @media (min-width: 640px) {
-    .skillGrid.tools {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-  
-  .skillCard {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: var(--background-dim2);
-    border-radius: 0.5rem;
-    padding: 0.75rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  // .skillCard:hover {
-  //   background-color: #0f172a;
-  // }
-  
-  @media (min-width: 640px) {
-    .skillCard {
-      padding: 1rem;
-    }
-  }
-  
-  .iconContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  @media (min-width: 640px) {
-    .iconContainer {
-      width: 3rem;
-      height: 3rem;
-    }
-  }
-  
-  .icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: var(--primary) !important;
-  }
-  
-  @media (min-width: 640px) {
-    .icon {
-      width: 2rem;
-      height: 2rem;
-    }
-  }
-  
-  .skillName {
-    font-size: 0.75rem !important;
-    text-align: center;
-    color: var(--primary);
-  }
-  
-  @media (min-width: 640px) {
-    .skillName {
-      font-size: 0.875rem !important;
-    }
-  }
-  
-  .experienceSection {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  
-  .experienceItem {
-    position: relative;
-    padding-left: 1.5rem;
-    border-left: 2px solid #66E7C8;
-  }
-  
-  @media (min-width: 640px) {
-    .experienceItem {
-      padding-left: 2rem;
-    }
-  }
-  
-  .timelineDot {
-    position: absolute;
-    left: -5px;
-    top: 0;
-    width: 10px;
-    height: 10px;
-    background-color: #020817;
-    border: 2px solid #66E7C8;
-    border-radius: 50%;
-  }
-  
-  @media (min-width: 640px) {
-    .timelineDot {
-      left: -7px;
-      width: 14px;
-      height: 14px;
-    }
-  }
-  
-  .experienceHeader {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  @media (min-width: 640px) {
-    .experienceHeader {
-      gap: 1rem;
-    }
-  }
-  
-  .logoContainer {
-    position: relative;
-    width: 2rem;
-    height: 2rem;
-  }
-  
-  @media (min-width: 640px) {
-    .logoContainer {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
-  }
-  
-  .logo {
-    border-radius: 50%;
-  }
-  
-  .companyInfo h3 {
-    font-size: 1rem;
-    font-weight: 600;
-  }
-  
-  @media (min-width: 640px) {
-    .companyInfo h3 {
-      font-size: 1.25rem;
-    }
-  }
-  
-  .period {
-    font-size: 0.75rem;
-    color: #9ca3af;
-  }
-  
-  @media (min-width: 640px) {
-    .period {
-      font-size: 0.875rem;
-    }
-  }
-  
-  .role {
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-  
-  @media (min-width: 640px) {
-    .role {
-      font-size: 1rem;
-    }
-  }
-  
-  .description {
-    font-size: 0.75rem;
-    color: #9ca3af;
-  }
-  
-  @media (min-width: 640px) {
-    .description {
-      font-size: 0.875rem;
-    }
-  }
-
-
-
-
-
-// src/styles/scss/structure/skillsExperience.module.scss
-
-.skillsContainer {
-  // Define primary variable for light and dark modes
-  --primary: #333; /* Default color for light mode */
-
-  [data-theme='dark'] & {
-    --primary: #fff; /* Color for dark mode */
-  }
-
-  .iconContainer {
-    font-size: 1.4rem;
-    color: var(--primary); /* Use the --primary variable */
-  }
-
-  .skillCard {
-    
-    &:hover {
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .icon {
-      margin-right: 10px;
-      color: var(--primary); /* Set the color of the icons */
-    }
-
-    .skillName {
-      font-size: 1.2rem;
-      color: var(--primary); /* Set the text color */
-    }
+  .currentBadge {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.85rem;
   }
 }

@@ -12,6 +12,7 @@ import CopyBlock from "../../blocks/about.copy";
 
 import about from "../../../styles/scss/sections/index/about.module.scss";
 import React from "react";
+import Ayush from '../../../../public/img/ayush.jpg'
 
 export default function Home() {
   return (
@@ -25,7 +26,7 @@ export default function Home() {
         <section className={about.content}>
           <div className={about.image}>
             <Image
-              src="https://github.com/Itsayu/Ayush/blob/main/img/Ayush%20Img.jpg?raw=true"
+              src={Ayush}
               width={600}
               height={800}
               alt="Ayush Kumar Tiwari"
