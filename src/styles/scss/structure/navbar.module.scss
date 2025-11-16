@@ -100,6 +100,7 @@
 			align-items: flex-start;
 			text-align: center;
 			gap: 4rem;
+			align-items: center;
 		}
 	}
 
@@ -322,6 +323,7 @@
 				gap: 1.5rem;
 				margin: 2rem 1rem;
 				padding-bottom: 1rem;
+				align-items: flex-start;
 			}
 		}
 
@@ -365,7 +367,6 @@
 	}
 }
 
-// Tablet optimizations
 @media (min-width: 769px) and (max-width: 1024px) {
 	.container {
 		.menu {
@@ -377,3 +378,11 @@
 		}
 	}
 }
+
+// @media screen and (max-width: 768px) {
+//  .menuContent {
+// 	ul{
+// 		align-items: flex-start;
+// 	}
+//  }
+// }
