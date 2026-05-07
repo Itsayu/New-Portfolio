@@ -40,7 +40,7 @@ export default function Career() {
 						<Badges list={fullStack} block="stack" fullContainer="fullContainer" color={undefined}/>
 						</div>
 
-					{/*	<article className={career.companyPositions}>
+						{/* <article className={career.companyPositions}>
 
 
 						<div className={career.position}>
@@ -66,8 +66,8 @@ As a  Full Stack Developer, my current focus lies in the field of complex projec
 							<div className={career.positionAlt}></div>
 						</div>
 
-					</article>
-*/}
+					</article> */}
+
 				</section>
 			</Container>
 			<Education/>
