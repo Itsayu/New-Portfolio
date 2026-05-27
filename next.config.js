@@ -11,8 +11,11 @@ const withPWA = require("next-pwa")({
 const nextConfig = {
   reactStrictMode: true,
 
-  // FIX: Force Next.js SWC to aggressively optimize and tree-shake heavy icons/3D libraries.
-  // This reduces the massive multi-megabyte footprint down to several kilobytes.
+  // FIX FOR NEXT.JS 16: Silences compiler thread lock errors 
+  // by allowing Turbopack to coordinate with legacy PWA Webpack hooks.
+  turbopack: {}, 
+
+  // Force tree-shaking on massive component and style sheets
   transpilePackages: [
     '@fortawesome/fontawesome-svg-core',
     '@fortawesome/free-brands-svg-icons',
@@ -71,16 +74,6 @@ const nextConfig = {
         hostname: "dev-to-uploads.s3.amazonaws.com",
       },
     ],
-  },
-
-  experimental: {
-    turbo: {
-      rules: {},
-    },
-  },
-
-  webpack(config) {
-    return config;
   },
 };
 
