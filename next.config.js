@@ -11,6 +11,23 @@ const withPWA = require("next-pwa")({
 const nextConfig = {
   reactStrictMode: true,
 
+  // FIX: Force Next.js SWC to aggressively optimize and tree-shake heavy icons/3D libraries.
+  // This reduces the massive multi-megabyte footprint down to several kilobytes.
+  transpilePackages: [
+    '@fortawesome/fontawesome-svg-core',
+    '@fortawesome/free-brands-svg-icons',
+    '@fortawesome/free-regular-svg-icons',
+    '@fortawesome/free-solid-svg-icons',
+    '@fortawesome/pro-duotone-svg-icons',
+    '@fortawesome/pro-light-svg-icons',
+    '@fortawesome/pro-regular-svg-icons',
+    '@fortawesome/pro-solid-svg-icons',
+    '@fortawesome/pro-thin-svg-icons',
+    '@fortawesome/sharp-solid-svg-icons',
+    'react-icons',
+    'three'
+  ],
+
   images: {
     remotePatterns: [
       {
@@ -45,7 +62,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "drive.google.com",
       },
-	  {
+      {
         protocol: "https",
         hostname: "**.dev.to", 
       },
